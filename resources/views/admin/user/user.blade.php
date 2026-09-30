@@ -30,7 +30,6 @@
         </div>
     @endif
 
-
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -77,7 +76,6 @@
 
                             <tr>
 
-
                                 <td class="text-center">
                                     {{ $loop->iteration }}
                                 </td>
@@ -110,12 +108,9 @@
 
                                 </td>
 
-
                                 <td class="text-center">
                                     {{ $user->role }}
                                 </td>
-
-                                {{-- STATUS ROLE --}}
                                 <td class="text-center">
 
                                     @if(isset($user->role))
@@ -143,13 +138,10 @@
                                     @endif
 
                                 </td>
-
-                                {{-- AKSI --}}
                                 <td>
 
                                     <div class="d-flex justify-content-center gap-2">
 
-                                        {{-- EDIT --}}
                                         <a href="{{ route('admin.user.edit', $user->id_user) }}"
                                            class="btn btn-sm btn-outline-primary"
                                            title="Edit">
@@ -157,8 +149,6 @@
                                             <i class="bi bi-pencil"></i>
 
                                         </a>
-
-                                        {{-- HAPUS --}}
                                         <form action="{{ route('admin.user.destroy', $user->id_user) }}"
                                               method="POST"
                                               onsubmit="return confirm('Yakin ingin menghapus user ini?')">

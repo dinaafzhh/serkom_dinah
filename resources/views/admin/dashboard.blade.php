@@ -53,7 +53,6 @@
         opacity: 0.15;
     }
 
-    /* CARD */
     .dashboard-card {
         border: none !important;
         border-radius: 14px;
@@ -73,7 +72,6 @@
         padding: 22px;
     }
 
-    /* ICON TOTAL */
     .dashboard-icon {
         width: 52px;
         height: 52px;
@@ -102,7 +100,6 @@
         background: #4b5563;
     }
 
-    /* ICON TAMBAHAN */
     .stat-icon {
         font-size: 38px;
         color: #374151 !important;
@@ -126,7 +123,6 @@
         color: #777;
     }
 
-    /* SECTION */
     .dashboard-section {
         margin-top: 25px;
     }
@@ -157,7 +153,6 @@
         padding: 22px;
     }
 
-    /* INFORMASI SEKOLAH */
     .school-info {
         display: flex;
         align-items: center;
@@ -201,7 +196,6 @@
         font-size: 14px;
     }
 
-    /* MENU CEPAT */
     .quick-menu {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -240,7 +234,6 @@
         font-weight: 600;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
 
         .dashboard-header {
@@ -261,10 +254,8 @@
     }
 </style>
 
-
 <div class="dashboard-page">
 
-    {{-- HEADER --}}
     <div class="dashboard-header">
 
         <i class="fa-solid fa-school school-icon"></i>
@@ -279,11 +270,7 @@
 
     </div>
 
-
-    {{-- STATISTIK --}}
     <div class="row g-4">
-
-        {{-- TOTAL SISWA --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">

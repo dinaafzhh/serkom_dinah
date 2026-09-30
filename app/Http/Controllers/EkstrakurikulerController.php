@@ -19,14 +19,10 @@ class EkstrakurikulerController extends Controller
         );
     }
 
-
-
     public function create()
     {
         return view('admin.ektrakurikuler.create');
     }
-
-
 
     public function store(Request $request)
     {
@@ -61,8 +57,6 @@ class EkstrakurikulerController extends Controller
             );
     }
 
-
-
     public function edit($id)
     {
         $ekstrakurikuler = Ekstrakurikuler::where(
@@ -75,8 +69,6 @@ class EkstrakurikulerController extends Controller
             compact('ekstrakurikuler')
         );
     }
-
-
 
     public function update(Request $request, $id)
     {
@@ -93,11 +85,7 @@ class EkstrakurikulerController extends Controller
             $id
         )->firstOrFail();
 
-
-
         $gambar = $ekstrakurikuler->gambar;
-
-
 
         if ($request->hasFile('gambar')) {
 
@@ -111,8 +99,6 @@ class EkstrakurikulerController extends Controller
                 ->store('ekstrakurikuler', 'public');
         }
 
-
-
         $ekstrakurikuler->update([
             'nama_ekskul' => $request->nama_ekskul,
             'pembina' => $request->pembina,
@@ -121,7 +107,6 @@ class EkstrakurikulerController extends Controller
             'gambar' => $gambar,
         ]);
 
-
         return redirect()
             ->route('admin.ektrakurikuler.ektrakurikuler')
             ->with(
@@ -129,8 +114,6 @@ class EkstrakurikulerController extends Controller
                 'Data ekstrakurikuler berhasil diperbarui!'
             );
     }
-
-
 
     public function destroy($id)
     {
@@ -149,9 +132,7 @@ class EkstrakurikulerController extends Controller
 
         }
 
-
         $ekstrakurikuler->delete();
-
 
         return redirect()
             ->route('admin.ektrakurikuler.ektrakurikuler')

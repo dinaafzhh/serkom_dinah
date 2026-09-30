@@ -19,14 +19,12 @@ class BeritaController extends Controller
         return view('admin.berita.berita', compact('berita'));
     }
 
-
     public function create()
     {
         $users = User::all();
 
         return view('admin.berita.create', compact('users'));
     }
-
 
     public function store(Request $request)
     {
@@ -47,7 +45,6 @@ class BeritaController extends Controller
             'id_user' => $request->id_user,
         ];
 
-        // Upload gambar
         if ($request->hasFile('gambar')) {
             $data['gambar'] = $request->file('gambar')
                 ->store('berita', 'public');
@@ -59,8 +56,6 @@ class BeritaController extends Controller
             ->route('admin.berita.berita')
             ->with('success', 'Berita berhasil ditambahkan!');
     }
-
-
 
     public function show(string $id)
     {
@@ -85,10 +80,6 @@ class BeritaController extends Controller
         );
     }
 
-
-    // =========================
-    // UPDATE BERITA
-    // =========================
     public function update(Request $request, string $id)
     {
         // Cari berdasarkan primary key id_berita
@@ -104,27 +95,22 @@ class BeritaController extends Controller
             'id_user' => 'required|exists:user,id_user',
         ]);
 
-        // Data yang akan diperbarui
         $berita->judul = $request->judul;
         $berita->isi = $request->isi;
         $berita->tanggal = $request->tanggal;
         $berita->status = $request->status;
         $berita->id_user = $request->id_user;
 
-        // Jika ada gambar baru
         if ($request->hasFile('gambar')) {
 
-            // Hapus gambar lama
             if ($berita->gambar) {
                 Storage::disk('public')->delete($berita->gambar);
             }
 
-            // Simpan gambar baru
             $berita->gambar = $request->file('gambar')
                 ->store('berita', 'public');
         }
 
-        // Simpan perubahan
         $berita->save();
 
         return redirect()
@@ -132,10 +118,6 @@ class BeritaController extends Controller
             ->with('success', 'Berita berhasil diperbarui!');
     }
 
-
-    // =========================
-    // HAPUS BERITA
-    // =========================
     public function destroy(string $id)
     {
         $berita = Berita::where('id_berita', $id)

@@ -27,7 +27,6 @@
     </style>
 </head>
 
-
 <body>
 
     <div class="sidebar-wrapper bg-dark" id="sidebar">
@@ -44,7 +43,6 @@
 
         <div class="flex-grow-1 overflow-y-auto">
 
-            <!-- MENU -->
             <div class="sidebar-menu-section">
 
                 <div class="sidebar-menu-title">
@@ -101,8 +99,6 @@
 
             </div>
 
-
-            <!-- MASTER DATA -->
             <div class="sidebar-menu-section">
 
                 <div class="sidebar-menu-title">
@@ -126,7 +122,6 @@
                         </a>
 
                     </li>
-
 
                     <li class="sidebar-menu-item">
 
@@ -176,7 +171,6 @@
 
             </div>
 
-
             <div class="sidebar-menu-section">
 
                 <div class="sidebar-menu-title">
@@ -200,7 +194,6 @@
                         </a>
 
                     </li>
-
 
                     <li class="sidebar-menu-item">
 
@@ -242,8 +235,6 @@
 
     </div>
 
-
-
     <div class="main-wrapper">
 
 
@@ -263,8 +254,6 @@
 
                 </button>
 
-
-                <!-- Desktop Sidebar -->
                 <button
                     class="btn-desktop-toggle d-none d-xl-flex"
                     id="desktop-sidebar-toggle"
@@ -277,8 +266,6 @@
 
             </div>
 
-
-            <!-- SEARCH -->
             <div class="navbar-search-wrapper">
 
                 <input
@@ -299,8 +286,6 @@
 
             </div>
 
-
-            <!-- PROFILE -->
             <div class="navbar-actions">
 
                 <div class="dropdown">
@@ -324,7 +309,6 @@
                         </span>
 
                     </button>
-
 
                     <ul
                         class="dropdown-menu dropdown-menu-end"
@@ -376,7 +360,6 @@
 
                         </li>
 
-
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -421,8 +404,6 @@
 
         </main>
 
-
-
         <footer class="footer-custom bg-white">
 
             <div class="footer-left">
@@ -445,15 +426,9 @@
 
     </div>
 
-
-
-
-
     <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-
-
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {

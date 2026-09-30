@@ -51,7 +51,6 @@ class GaleriController extends Controller
             ->with('success', 'Data galeri berhasil ditambahkan!');
     }
 
-
     public function show(string $id)
     {
         $galeri = Galeri::findOrFail($id);
@@ -104,7 +103,6 @@ class GaleriController extends Controller
             ->with('success', 'Data galeri berhasil diperbarui!');
     }
 
-    
     public function destroy(string $id)
     {
         $galeri = Galeri::findOrFail($id);

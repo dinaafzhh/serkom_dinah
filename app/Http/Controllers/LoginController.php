@@ -13,7 +13,6 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-
     public function login(Request $request)
     {
         $request->validate([
@@ -25,7 +24,6 @@ class LoginController extends Controller
             ->where('username', $request->username)
             ->first();
 
-
         if (!$user) {
             return back()
                 ->with('error', 'Username atau password salah!')
@@ -33,7 +31,6 @@ class LoginController extends Controller
         }
 
         $passwordCocok = false;
-
 
         if (
             str_starts_with($user->password, '$2y$') ||
@@ -49,7 +46,6 @@ class LoginController extends Controller
 
             $passwordCocok = ($request->password === $user->password);
         }
-
 
         if (!$passwordCocok) {
             return back()
@@ -69,7 +65,6 @@ class LoginController extends Controller
                 ]);
         }
 
-
         $request->session()->regenerate();
 
         session([
@@ -78,11 +73,9 @@ class LoginController extends Controller
             'role' => $user->role,
         ]);
 
-
         return redirect()->route('admin.dashboard');
     }
 
-  
     public function logout(Request $request)
     {
         $request->session()->invalidate();

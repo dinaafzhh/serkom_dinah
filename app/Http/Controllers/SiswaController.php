@@ -20,7 +20,6 @@ class SiswaController extends Controller
         return view('admin.siswa.create');
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
@@ -75,7 +74,7 @@ class SiswaController extends Controller
             ->with('success', 'Data siswa berhasil diperbarui.');
     }
 
-    
+
     public function destroy(Siswa $siswa)
     {
         $siswa->delete();

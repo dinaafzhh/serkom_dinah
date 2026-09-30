@@ -47,7 +47,6 @@
 
         </div>
 
-
         <div class="card-body">
 
             <div class="table-responsive">
@@ -94,7 +93,6 @@
 
                     </thead>
 
-
                     <tbody>
 
                         @forelse($berita as $index => $item)
@@ -105,7 +103,6 @@
                                 <td class="text-center">
                                     {{ $index + 1 }}
                                 </td>
-
 
                                 <td class="text-center">
 
@@ -132,8 +129,6 @@
                                     @endif
 
                                 </td>
-
-
 
                                 <td>
 
