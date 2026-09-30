@@ -41,8 +41,6 @@
 
     <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-md border border-gray-200">
 
-
-        {{-- JUDUL --}}
         <div class="text-center mb-6">
 
             <h1 class="text-2xl font-bold text-gradient">

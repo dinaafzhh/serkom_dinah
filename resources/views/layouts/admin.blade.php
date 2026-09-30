@@ -148,8 +148,6 @@
 
             </div>
 
-
-            <!-- KESISWAAN -->
             <div class="sidebar-menu-section">
 
                 <div class="sidebar-menu-title">
@@ -158,7 +156,6 @@
 
                 <ul class="sidebar-menu-list">
 
-                    <!-- EKSTRAKURIKULER -->
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.ektrakurikuler.ektrakurikuler') }}"
@@ -180,7 +177,6 @@
             </div>
 
 
-            <!-- PUBLIKASI -->
             <div class="sidebar-menu-section">
 
                 <div class="sidebar-menu-title">
@@ -189,7 +185,6 @@
 
                 <ul class="sidebar-menu-list">
 
-                    <!-- BERITA -->
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.berita.berita') }}"
@@ -207,7 +202,6 @@
                     </li>
 
 
-                    <!-- GALERI -->
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.galeri.galeri') }}"
@@ -224,8 +218,6 @@
 
                     </li>
 
-
-                    <!-- KELOLA USER -->
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.user.user') }}"
@@ -334,7 +326,6 @@
                     </button>
 
 
-                    <!-- DROPDOWN -->
                     <ul
                         class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="profile-dropdown"
@@ -355,7 +346,6 @@
                         </li>
 
 
-                        <!-- PROFIL -->
                         <li>
 
                             <a
@@ -371,8 +361,6 @@
 
                         </li>
 
-
-                        <!-- USER -->
                         <li>
 
                             <a
@@ -458,21 +446,14 @@
     </div>
 
 
-    
 
-    <!-- Bootstrap -->
+
+
     <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Flatpickr -->
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-
-    <!-- Dashboard JS -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
 
-    <!-- =========================
-         SEARCH OTOMATIS
-    ========================== -->
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {

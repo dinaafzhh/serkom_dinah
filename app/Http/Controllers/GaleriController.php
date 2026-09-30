@@ -67,7 +67,7 @@ class GaleriController extends Controller
         return view('admin.galeri.edit', compact('galeri'));
     }
 
-    
+
     public function update(Request $request, string $id)
     {
         $galeri = Galeri::findOrFail($id);
@@ -104,9 +104,7 @@ class GaleriController extends Controller
             ->with('success', 'Data galeri berhasil diperbarui!');
     }
 
-    /**
-     * Menghapus galeri
-     */
+    
     public function destroy(string $id)
     {
         $galeri = Galeri::findOrFail($id);

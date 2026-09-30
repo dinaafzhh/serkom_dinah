@@ -75,7 +75,7 @@
                                     {{ $item->nama_siswa }}
                                 </td>
 
-                              
+
                                 <td class="text-center">
                                     @if($item->jenis_kelamin == 'L')
                                         <span class="badge bg-primary-subtle text-primary px-2 py-2">
@@ -92,17 +92,14 @@
                                     @endif
                                 </td>
 
-                                {{-- TAHUN MASUK --}}
                                 <td class="text-center">
                                     <span class="badge bg-primary-subtle text-primary px-2 py-2">
                                         {{ $item->tahun_masuk }}
                                     </span>
                                 </td>
 
-                                {{-- AKSI --}}
                                 <td class="text-center">
 
-                                    {{-- EDIT --}}
                                     <a href="{{ route('admin.siswa.edit', $item->id_siswa) }}"
                                        class="btn btn-sm btn-warning text-white me-1"
                                        title="Edit">
@@ -111,7 +108,6 @@
 
                                     </a>
 
-                                    {{-- HAPUS --}}
                                     <form
                                         action="{{ route('admin.siswa.destroy', $item->id_siswa) }}"
                                         method="POST"

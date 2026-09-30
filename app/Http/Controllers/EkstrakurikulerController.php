@@ -140,7 +140,7 @@ class EkstrakurikulerController extends Controller
         )->firstOrFail();
 
 
-       
+
         if ($ekstrakurikuler->gambar) {
 
             Storage::disk('public')->delete(
@@ -150,7 +150,6 @@ class EkstrakurikulerController extends Controller
         }
 
 
-        // HAPUS DATA
         $ekstrakurikuler->delete();
 
 

@@ -72,18 +72,17 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        // Simpan data user ke session
         session([
             'id_user' => $user->id_user,
             'username' => $user->username,
             'role' => $user->role,
         ]);
 
-       
+
         return redirect()->route('admin.dashboard');
     }
 
-    // Logout
+  
     public function logout(Request $request)
     {
         $request->session()->invalidate();
