@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h4 class="fw-bold mb-1">Data Guru</h4>
@@ -33,7 +32,6 @@
         </div>
     @endif
 
-    {{-- TABEL DATA GURU --}}
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -63,7 +61,6 @@
 
                         <tr>
 
-
                             <td class="text-center">
                                 {{ $loop->iteration }}
                             </td>
@@ -90,11 +87,9 @@
                                 @endif
                             </td>
 
-
                             <td class="fw-semibold">
                                 {{ $guru->nama_guru }}
                             </td>
-
 
                             <td>
                                 {{ $guru->nip }}
@@ -106,10 +101,8 @@
                                 </span>
                             </td>
 
-
                             <td class="text-center">
 
-                              
                                 <a href="{{ route('admin.guru.edit', $guru->id_guru) }}"
                                    class="btn btn-sm btn-warning text-white me-1"
                                    title="Edit">

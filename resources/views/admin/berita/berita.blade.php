@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
@@ -25,8 +24,6 @@
 
     </div>
 
-
-
     @if(session('success'))
 
         <div class="alert alert-success alert-dismissible fade show">
@@ -39,8 +36,6 @@
         </div>
 
     @endif
-
-
 
     <div class="card border-0 shadow-sm">
 
@@ -148,8 +143,6 @@
 
                                 </td>
 
-
-
                                 <td>
 
                                     @if($item->isi)
@@ -176,8 +169,6 @@
 
                                 </td>
 
-
-
                                 <td>
 
                                     @if($item->user)
@@ -193,8 +184,6 @@
                                     @endif
 
                                 </td>
-
-
 
                                 <td class="text-center">
 
@@ -213,7 +202,6 @@
                                     @endif
 
                                 </td>
-
 
                                 <td>
 

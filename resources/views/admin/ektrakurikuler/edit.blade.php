@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-
     <div class="mb-4">
         <h4 class="fw-bold mb-1">
             Edit Ekstrakurikuler
@@ -26,7 +25,6 @@
             </ul>
         </div>
     @endif
-
 
     <div class="card border-0 shadow-sm">
 
@@ -77,7 +75,6 @@
                     @enderror
 
                 </div>
-
 
                 <div class="mb-3">
 
@@ -159,7 +156,6 @@
 
                 </div>
 
-
                 <div class="mb-3">
 
                     <label class="form-label fw-semibold">
@@ -222,8 +218,6 @@
 
                 </div>
 
-
-             
                 <div class="d-flex gap-2">
 
                     <a
@@ -236,7 +230,6 @@
                         Kembali
 
                     </a>
-
 
                     <button
                         type="submit"

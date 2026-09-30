@@ -4,7 +4,6 @@
 
 <div class="container-fluid px-4 py-4">
 
-
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="h3 mb-1 text-dark fw-bold">Tambah Guru</h1>
@@ -21,7 +20,6 @@
         </div>
     </div>
 
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -31,7 +29,6 @@
             </ul>
         </div>
     @endif
-
 
     <div class="card border-0 shadow-sm">
         <div class="card-body">
@@ -107,7 +104,6 @@
                         Format JPG, JPEG, PNG, atau WEBP. Maksimal 5 MB.
                     </small>
                 </div>
-
 
                 <div class="d-flex gap-2">
 

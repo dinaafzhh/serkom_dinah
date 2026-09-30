@@ -58,13 +58,10 @@
                         @forelse($galeri as $item)
 
                             <tr>
-
-                                {{-- NO --}}
                                 <td>
                                     {{ $loop->iteration }}
                                 </td>
 
-                                {{-- FILE --}}
                                 <td class="text-center">
 
                                     @if($item->file)
@@ -75,7 +72,6 @@
                                             );
                                         @endphp
 
-                                        {{-- FOTO --}}
                                         @if(in_array($extension, ['jpg', 'jpeg', 'png', 'webp']))
 
                                             <img
@@ -86,7 +82,6 @@
                                                 style="object-fit: cover;"
                                                 alt="{{ $item->judul }}">
 
-                                        {{-- VIDEO --}}
                                         @elseif(in_array($extension, ['mp4', 'mov', 'avi', 'webm']))
 
                                             <video
@@ -102,7 +97,6 @@
 
                                             </video>
 
-                                        {{-- FILE LAIN --}}
                                         @else
 
                                             <span class="text-muted">
@@ -121,12 +115,10 @@
 
                                 </td>
 
-                                {{-- JUDUL --}}
                                 <td>
                                     {{ $item->judul }}
                                 </td>
 
-                                {{-- KATEGORI --}}
                                 <td>
 
                                     <span class="badge bg-primary">
@@ -135,22 +127,18 @@
 
                                 </td>
 
-                                {{-- TANGGAL --}}
                                 <td>
                                     {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}
                                 </td>
 
-                                {{-- KETERANGAN --}}
                                 <td>
                                     {{ $item->keterangan }}
                                 </td>
 
-                                {{-- AKSI --}}
                                 <td>
 
                                     <div class="d-flex gap-2">
 
-                                        {{-- EDIT --}}
                                         <a href="{{ route('admin.galeri.edit', $item->id_galeri) }}"
                                            class="btn btn-warning btn-sm">
 
@@ -158,7 +146,6 @@
 
                                         </a>
 
-                                        {{-- HAPUS --}}
                                         <form
                                             action="{{ route('admin.galeri.destroy', $item->id_galeri) }}"
                                             method="POST"

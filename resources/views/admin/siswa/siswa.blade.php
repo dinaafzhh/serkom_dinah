@@ -150,7 +150,6 @@
 
             </div>
 
-            {{-- PAGINATION --}}
             @if($siswa->hasPages())
                 <div class="mt-4">
                     {{ $siswa->links() }}

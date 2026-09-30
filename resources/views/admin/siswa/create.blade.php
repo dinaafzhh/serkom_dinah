@@ -17,8 +17,6 @@
             <form action="{{ route('admin.siswa.store') }}" method="POST">
 
                 @csrf
-
-                {{-- NISN --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         NISN

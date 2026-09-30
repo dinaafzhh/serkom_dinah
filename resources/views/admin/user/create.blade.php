@@ -66,7 +66,6 @@
                     @enderror
                 </div>
 
-             
                 <div class="d-flex gap-2">
                     <a href="{{ route('admin.user.user') }}" class="btn btn-light px-4">
                         Batal

@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-
     <div class="mb-4">
         <h4 class="fw-bold mb-1">
             Edit Berita
@@ -14,7 +13,6 @@
             Perbarui informasi berita sekolah
         </p>
     </div>
-
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -27,7 +25,6 @@
             </ul>
         </div>
     @endif
-
 
     <div class="card border-0 shadow-sm">
 
@@ -42,8 +39,6 @@
                 @csrf
                 @method('PUT')
 
-
-                {{-- JUDUL --}}
                 <div class="mb-3">
 
                     <label
@@ -71,7 +66,6 @@
 
                 </div>
 
-
                 <div class="mb-3">
 
                     <label
@@ -96,8 +90,6 @@
                     @enderror
 
                 </div>
-
-
 
                 <div class="mb-3">
 
@@ -185,8 +177,6 @@
 
                 </div>
 
-
-
                 <div class="mb-3">
 
                     <label
@@ -227,8 +217,6 @@
 
                 </div>
 
-
-
                 <div class="mb-4">
 
                     <label
@@ -266,8 +254,6 @@
 
                 </div>
 
-
-              
                 <div class="d-flex gap-2">
 
                     <button

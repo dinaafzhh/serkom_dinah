@@ -96,7 +96,6 @@
 
                     </thead>
 
-
                     <tbody>
 
                         @forelse($ekstrakurikuler as $index => $item)

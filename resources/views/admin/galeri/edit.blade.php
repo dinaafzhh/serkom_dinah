@@ -48,7 +48,6 @@
                     @enderror
                 </div>
 
-                {{-- KETERANGAN --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Keterangan
@@ -66,7 +65,6 @@
                     @enderror
                 </div>
 
-                {{-- KATEGORI --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Kategori
@@ -107,7 +105,6 @@
                     @enderror
                 </div>
 
-                {{-- FILE SAAT INI --}}
                 <div class="mb-3">
 
                     <label class="form-label fw-semibold">
@@ -122,7 +119,6 @@
                             );
                         @endphp
 
-                        {{-- FOTO --}}
                         @if (in_array($extension, ['jpg', 'jpeg', 'png', 'webp']))
 
                             <div class="mb-2">
@@ -133,7 +129,6 @@
                                      class="img-thumbnail">
                             </div>
 
-                        {{-- VIDEO --}}
                         @elseif (in_array($extension, ['mp4', 'mov', 'avi', 'webm']))
 
                             <div class="mb-2">
@@ -153,7 +148,6 @@
 
                             </div>
 
-                        {{-- FILE LAIN --}}
                         @else
 
                             <div class="alert alert-secondary">
@@ -175,7 +169,6 @@
 
                 </div>
 
-                {{-- GANTI FILE --}}
                 <div class="mb-3">
 
                     <label class="form-label fw-semibold">
@@ -199,7 +192,6 @@
 
                 </div>
 
-                {{-- TANGGAL --}}
                 <div class="mb-4">
 
                     <label class="form-label fw-semibold">
@@ -219,8 +211,7 @@
                     @enderror
 
                 </div>
-
-                {{-- BUTTON --}}
+                
                 <div class="d-flex gap-2">
 
                     <button type="submit"

@@ -12,7 +12,6 @@
         </p>
     </div>
 
-    {{-- ERROR --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -98,7 +97,6 @@
 
                 </div>
 
-
                 <div class="mb-3">
 
                     <label
@@ -126,7 +124,6 @@
                     @enderror
 
                 </div>
-
 
                 <div class="mb-3">
 
@@ -161,7 +158,6 @@
 
                 </div>
 
-
                 <div class="mb-4">
 
                     <label
@@ -192,7 +188,6 @@
 
                 </div>
 
-              
                 <div class="d-flex gap-2">
 
                     <a

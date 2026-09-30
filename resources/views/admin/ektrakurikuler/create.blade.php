@@ -28,7 +28,6 @@
 
                 @csrf
 
-                
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Nama Ekstrakurikuler
@@ -64,7 +63,6 @@
                     @enderror
                 </div>
 
-                {{-- JADWAL --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Jadwal Latihan
@@ -82,7 +80,6 @@
                     @enderror
                 </div>
 
-                {{-- DESKRIPSI --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Deskripsi
@@ -99,7 +96,6 @@
                     @enderror
                 </div>
 
-                {{-- GAMBAR --}}
                 <div class="mb-4">
                     <label class="form-label fw-semibold">
                         Gambar Ekstrakurikuler
@@ -119,7 +115,6 @@
                     @enderror
                 </div>
 
-                {{-- BUTTON --}}
                 <div class="d-flex justify-content-end gap-2">
 
                     <a href="{{ route('admin.ektrakurikuler.ektrakurikuler') }}"

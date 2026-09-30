@@ -51,7 +51,6 @@
                     @enderror
                 </div>
 
-
                 <div class="mb-3">
                     <label for="keterangan" class="form-label fw-semibold">
                         Keterangan
@@ -70,7 +69,6 @@
                     @enderror
                 </div>
 
-              
                 <div class="mb-3">
                     <label for="kategori" class="form-label fw-semibold">
                         Kategori
@@ -114,7 +112,6 @@
                     @enderror
                 </div>
 
-                {{-- FOTO --}}
                 <div class="mb-3">
                     <label for="file" class="form-label fw-semibold">
                         Foto
@@ -138,7 +135,6 @@
                     @enderror
                 </div>
 
-                {{-- TANGGAL --}}
                 <div class="mb-4">
                     <label for="tanggal" class="form-label fw-semibold">
                         Tanggal
@@ -158,7 +154,6 @@
                     @enderror
                 </div>
 
-                {{-- TOMBOL --}}
                 <div class="d-flex gap-2">
 
                     <button type="submit" class="btn btn-primary">
