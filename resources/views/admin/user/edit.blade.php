@@ -34,7 +34,7 @@
                 @csrf
                 @method('PUT')
 
-                {{-- USERNAME --}}
+
                 <div class="mb-3">
                     <label class="form-label">
                         Username
@@ -56,7 +56,7 @@
                     @enderror
                 </div>
 
-                {{-- ROLE --}}
+
                 <div class="mb-3">
                     <label class="form-label">
                         Role
@@ -86,7 +86,6 @@
                     @enderror
                 </div>
 
-                {{-- PASSWORD --}}
                 <div class="mb-4">
                     <label class="form-label">
                         Password Baru

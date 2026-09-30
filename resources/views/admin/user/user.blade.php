@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h4 class="fw-bold mb-1">Data User</h4>
@@ -19,7 +18,6 @@
         </a>
     </div>
 
-    {{-- SUCCESS MESSAGE --}}
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="bi bi-check-circle me-2"></i>
@@ -32,10 +30,9 @@
         </div>
     @endif
 
-    {{-- CARD --}}
+
     <div class="card border-0 shadow-sm">
 
-        {{-- CARD HEADER --}}
         <div class="card-header bg-white py-3">
             <h5 class="mb-0 fw-semibold">
                 Daftar User
@@ -44,7 +41,6 @@
 
         <div class="card-body">
 
-            {{-- TABLE --}}
             <div class="table-responsive">
 
                 <table class="table table-bordered table-hover align-middle">
@@ -81,12 +77,12 @@
 
                             <tr>
 
-                                {{-- NO --}}
+
                                 <td class="text-center">
                                     {{ $loop->iteration }}
                                 </td>
 
-                                {{-- USERNAME --}}
+
                                 <td>
 
                                     <div class="d-flex align-items-center">
@@ -114,7 +110,7 @@
 
                                 </td>
 
-                                {{-- ROLE --}}
+
                                 <td class="text-center">
                                     {{ $user->role }}
                                 </td>

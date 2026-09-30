@@ -9,7 +9,6 @@
         <p class="text-muted mb-0">Ubah data galeri sekolah</p>
     </div>
 
-    {{-- PESAN ERROR --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -30,7 +29,6 @@
                 @csrf
                 @method('PUT')
 
-                {{-- JUDUL --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Judul Galeri

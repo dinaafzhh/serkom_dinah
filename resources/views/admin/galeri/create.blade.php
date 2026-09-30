@@ -30,7 +30,6 @@
 
                 @csrf
 
-                {{-- JUDUL --}}
                 <div class="mb-3">
                     <label for="judul" class="form-label fw-semibold">
                         Judul Galeri
@@ -52,7 +51,7 @@
                     @enderror
                 </div>
 
-                {{-- KETERANGAN --}}
+
                 <div class="mb-3">
                     <label for="keterangan" class="form-label fw-semibold">
                         Keterangan
@@ -71,7 +70,7 @@
                     @enderror
                 </div>
 
-                {{-- KATEGORI --}}
+              
                 <div class="mb-3">
                     <label for="kategori" class="form-label fw-semibold">
                         Kategori
