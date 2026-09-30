@@ -2,11 +2,15 @@
 
 @section('content')
 
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 <style>
     .dashboard-page {
         padding: 10px;
     }
 
+    /* HEADER */
     .dashboard-header {
         background: linear-gradient(135deg, #374151, #e5e7eb);
         color: white;
@@ -50,6 +54,7 @@
         opacity: 0.15;
     }
 
+    /* CARD */
     .dashboard-card {
         border: none !important;
         border-radius: 14px;
@@ -69,6 +74,7 @@
         padding: 22px;
     }
 
+    /* ICON TOTAL */
     .dashboard-icon {
         width: 52px;
         height: 52px;
@@ -97,6 +103,18 @@
         background: #4b5563;
     }
 
+    /* ICON TAMBAHAN */
+    .stat-icon {
+        font-size: 38px;
+        color: #374151 !important;
+        transition: 0.3s;
+    }
+
+    .dashboard-card:hover .stat-icon {
+        color: #6b7280 !important;
+        transform: scale(1.1);
+    }
+
     .dashboard-card h3 {
         font-size: 28px;
         font-weight: 700;
@@ -109,6 +127,7 @@
         color: #777;
     }
 
+    /* SECTION */
     .dashboard-section {
         margin-top: 25px;
     }
@@ -139,6 +158,7 @@
         padding: 22px;
     }
 
+    /* INFORMASI SEKOLAH */
     .school-info {
         display: flex;
         align-items: center;
@@ -182,6 +202,7 @@
         font-size: 14px;
     }
 
+    /* MENU CEPAT */
     .quick-menu {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -220,6 +241,7 @@
         font-weight: 600;
     }
 
+    /* RESPONSIVE */
     @media (max-width: 768px) {
 
         .dashboard-header {
@@ -262,6 +284,7 @@
     {{-- STATISTIK --}}
     <div class="row g-4">
 
+        {{-- TOTAL SISWA --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -272,9 +295,16 @@
                         <i class="fa-solid fa-users"></i>
                     </div>
 
-                    <h3>0</h3>
+                    <div class="d-flex align-items-center justify-content-between">
 
-                    <p>Total Siswa</p>
+                        <div>
+                            <h3>1400</h3>
+                            <p>Total Siswa</p>
+                        </div>
+
+                        <i class="fa-solid fa-user-graduate stat-icon"></i>
+
+                    </div>
 
                 </div>
 
@@ -283,6 +313,7 @@
         </div>
 
 
+        {{-- TOTAL GURU --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -293,9 +324,16 @@
                         <i class="fa-solid fa-chalkboard-user"></i>
                     </div>
 
-                    <h3>0</h3>
+                    <div class="d-flex align-items-center justify-content-between">
 
-                    <p>Total Guru</p>
+                        <div>
+                            <h3>56</h3>
+                            <p>Total Guru</p>
+                        </div>
+
+                        <i class="fa-solid fa-person-chalkboard stat-icon"></i>
+
+                    </div>
 
                 </div>
 
@@ -304,6 +342,7 @@
         </div>
 
 
+        {{-- TOTAL BERITA --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -314,9 +353,16 @@
                         <i class="fa-solid fa-newspaper"></i>
                     </div>
 
-                    <h3>0</h3>
+                    <div class="d-flex align-items-center justify-content-between">
 
-                    <p>Total Berita</p>
+                        <div>
+                            <h3>5</h3>
+                            <p>Total Berita</p>
+                        </div>
+
+                        <i class="fa-solid fa-file-lines stat-icon"></i>
+
+                    </div>
 
                 </div>
 
@@ -325,6 +371,7 @@
         </div>
 
 
+        {{-- TOTAL EKSTRAKURIKULER --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -335,9 +382,16 @@
                         <i class="fa-solid fa-puzzle-piece"></i>
                     </div>
 
-                    <h3>0</h3>
+                    <div class="d-flex align-items-center justify-content-between">
 
-                    <p>Ekstrakurikuler</p>
+                        <div>
+                            <h3>10</h3>
+                            <p>Total Ekstrakurikuler</p>
+                        </div>
+
+                        <i class="fa-solid fa-trophy stat-icon"></i>
+
+                    </div>
 
                 </div>
 
@@ -353,7 +407,6 @@
 
         <div class="row g-4">
 
-
             {{-- INFORMASI SEKOLAH --}}
             <div class="col-lg-7">
 
@@ -368,8 +421,10 @@
 
                     </div>
 
+
                     <div class="section-card-body">
 
+                        {{-- NAMA SEKOLAH --}}
                         <div class="school-info">
 
                             <div class="school-info-icon">
@@ -391,6 +446,7 @@
                         </div>
 
 
+                        {{-- LOKASI --}}
                         <div class="school-info">
 
                             <div class="school-info-icon">
@@ -412,6 +468,7 @@
                         </div>
 
 
+                        {{-- JENJANG --}}
                         <div class="school-info">
 
                             <div class="school-info-icon">
@@ -433,6 +490,7 @@
                         </div>
 
 
+                        {{-- SISTEM --}}
                         <div class="school-info">
 
                             <div class="school-info-icon">
@@ -474,6 +532,7 @@
 
                     </div>
 
+
                     <div class="section-card-body">
 
                         <div class="quick-menu">
@@ -508,7 +567,6 @@
                                 <span>Ekstrakurikuler</span>
                             </a>
 
-                            {{-- KELOLA USER --}}
                             <a href="/user">
                                 <i class="fa-solid fa-user-gear"></i>
                                 <span>Kelola User</span>
@@ -529,3 +587,7 @@
 </div>
 
 @endsection
+
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
