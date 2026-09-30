@@ -4,7 +4,7 @@
 
 <div class="container-fluid px-4 py-4">
 
-    {{-- HEADER --}}
+   
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="h3 mb-1 text-dark fw-bold">Tambah Guru</h1>
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    {{-- ERROR VALIDASI --}}
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -32,7 +32,7 @@
         </div>
     @endif
 
-    {{-- FORM --}}
+
     <div class="card border-0 shadow-sm">
         <div class="card-body">
 
@@ -76,7 +76,6 @@
                     >
                 </div>
 
-                {{-- MATA PELAJARAN --}}
                 <div class="mb-3">
                     <label for="mapel" class="form-label fw-semibold">
                         Mata Pelajaran
@@ -93,7 +92,6 @@
                     >
                 </div>
 
-                {{-- FOTO --}}
                 <div class="mb-4">
                     <label for="foto" class="form-label fw-semibold">
                         Foto Guru
@@ -113,7 +111,7 @@
                     </small>
                 </div>
 
-                {{-- BUTTON --}}
+
                 <div class="d-flex gap-2">
 
                     <a href="{{ route('admin.guru.guru') }}"

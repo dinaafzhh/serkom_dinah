@@ -4,7 +4,7 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER HALAMAN --}}
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h4 class="fw-bold mb-1">Data Guru</h4>
@@ -20,7 +20,6 @@
         </a>
     </div>
 
-    {{-- NOTIFIKASI --}}
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show"
              role="alert">
@@ -64,12 +63,11 @@
 
                         <tr>
 
-                            {{-- NOMOR --}}
+
                             <td class="text-center">
                                 {{ $loop->iteration }}
                             </td>
 
-                            {{-- FOTO --}}
                             <td class="text-center">
                                 @if($guru->foto)
 
@@ -92,27 +90,26 @@
                                 @endif
                             </td>
 
-                            {{-- NAMA GURU --}}
+
                             <td class="fw-semibold">
                                 {{ $guru->nama_guru }}
                             </td>
 
-                            {{-- NIP --}}
+
                             <td>
                                 {{ $guru->nip }}
                             </td>
 
-                            {{-- MATA PELAJARAN --}}
                             <td>
                                 <span class="badge bg-primary-subtle text-primary px-2 py-2">
                                     {{ $guru->mapel }}
                                 </span>
                             </td>
 
-                            {{-- AKSI --}}
+
                             <td class="text-center">
 
-                                {{-- EDIT --}}
+                              
                                 <a href="{{ route('admin.guru.edit', $guru->id_guru) }}"
                                    class="btn btn-sm btn-warning text-white me-1"
                                    title="Edit">

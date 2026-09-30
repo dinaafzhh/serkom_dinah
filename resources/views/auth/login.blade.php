@@ -11,9 +11,6 @@
 
     <style>
 
-        /* =========================
-           GRADASI ABU + PUTIH
-        ========================= */
 
         .gradient-gray-white {
             background: linear-gradient(135deg, #374151, #e5e7eb);
@@ -59,7 +56,6 @@
         </div>
 
 
-        {{-- PESAN ERROR --}}
         @if(session('error'))
 
             <div class="mb-4 p-3 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg text-sm">
@@ -71,13 +67,10 @@
         @endif
 
 
-        {{-- FORM LOGIN --}}
         <form action="/login" method="POST" class="space-y-4">
 
             @csrf
 
-
-            {{-- USERNAME --}}
             <div>
 
                 <label for="username"
@@ -108,8 +101,6 @@
 
             </div>
 
-
-            {{-- PASSWORD --}}
             <div>
 
                 <label for="password"
@@ -140,7 +131,6 @@
             </div>
 
 
-            {{-- INGAT SAYA --}}
             <div class="flex items-center text-xs text-gray-600">
 
                 <label class="flex items-center space-x-2 cursor-pointer">
@@ -157,8 +147,6 @@
 
             </div>
 
-
-            {{-- TOMBOL LOGIN --}}
             <button type="submit"
                     class="gradient-gray-white w-full py-2.5 text-white font-medium text-sm rounded-lg transition duration-200 shadow">
 
@@ -170,7 +158,6 @@
         </form>
 
 
-        {{-- FOOTER --}}
         <div class="mt-6 text-center text-xs text-gray-500">
 
             Belum punya akun?

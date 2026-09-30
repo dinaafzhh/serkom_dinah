@@ -7,28 +7,15 @@
 
     <title>Admin - SMK YPC Tasikmalaya</title>
 
-    <!-- SEO -->
     <meta name="description" content="Admin Dashboard SMK YPC Tasikmalaya">
     <meta name="author" content="SMK YPC Tasikmalaya">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet"
-          href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-          href="{{ asset('assets/libs/bootstrap-icons/bootstrap-icons.css') }}">
-
-    <!-- ApexCharts -->
-    <link rel="stylesheet"
-          href="{{ asset('assets/libs/apexcharts/apexcharts.css') }}">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet"---
-          href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/apexcharts/apexcharts.css') }}">
+    <link rel="stylesheet"---  href="{{ asset('assets/css/main.css') }}">
 
     <style>
         .sidebar-brand img {
@@ -43,12 +30,8 @@
 
 <body>
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
     <div class="sidebar-wrapper bg-dark" id="sidebar">
 
-        <!-- BRAND -->
         <a href="{{ route('admin.dashboard') }}"
            class="sidebar-brand text-decoration-none text-white">
 
@@ -59,8 +42,6 @@
 
         </a>
 
-
-        <!-- MENU SIDEBAR -->
         <div class="flex-grow-1 overflow-y-auto">
 
             <!-- MENU -->
@@ -92,8 +73,6 @@
 
             </div>
 
-
-            <!-- PENGATURAN -->
             <div class="sidebar-menu-section">
 
                 <div class="sidebar-menu-title">
@@ -132,7 +111,6 @@
 
                 <ul class="sidebar-menu-list">
 
-                    <!-- GURU -->
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.guru.guru') }}"
@@ -150,7 +128,6 @@
                     </li>
 
 
-                    <!-- SISWA -->
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.siswa.siswa') }}"
@@ -274,15 +251,10 @@
     </div>
 
 
-    <!-- =========================
-         MAIN WRAPPER
-    ========================== -->
+
     <div class="main-wrapper">
 
 
-        <!-- =========================
-             NAVBAR
-        ========================== -->
         <header class="navbar-custom bg-white">
 
             <!-- NAVBAR LEFT -->
@@ -422,7 +394,6 @@
                         </li>
 
 
-                        <!-- LOGOUT -->
                         <li>
 
                             <form
@@ -456,9 +427,6 @@
         </header>
 
 
-        <!-- =========================
-             CONTENT
-        ========================== -->
         <main>
 
             @yield('content')
@@ -466,9 +434,7 @@
         </main>
 
 
-        <!-- =========================
-             FOOTER
-        ========================== -->
+
         <footer class="footer-custom bg-white">
 
             <div class="footer-left">
@@ -492,9 +458,7 @@
     </div>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    
 
     <!-- Bootstrap -->
     <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

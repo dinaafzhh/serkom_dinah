@@ -268,7 +268,6 @@
 
     <div class="profil-container">
 
-        {{-- HERO PROFIL --}}
         <div class="profil-hero">
 
             <div class="hero-content">
@@ -289,7 +288,6 @@
                         kreatif, dan siap menghadapi dunia kerja.
                     </p>
 
-                    {{-- KELOLA USER --}}
                     <a href="/user" class="btn-kelola-user">
                         <i class="bi bi-person-gear"></i>
                         Kelola User
@@ -310,10 +308,9 @@
 
         </div>
 
-        {{-- ISI PROFIL --}}
+
         <div class="profil-content">
 
-            {{-- TENTANG SEKOLAH --}}
             <div class="profil-section">
 
                 <h2>
@@ -344,7 +341,7 @@
 
             </div>
 
-            {{-- SEJARAH --}}
+
             <div class="profil-section">
 
                 <h2>
@@ -368,7 +365,7 @@
 
             </div>
 
-            {{-- IDENTITAS SEKOLAH --}}
+
             <div class="profil-section">
 
                 <h2>
@@ -429,7 +426,7 @@
 
             </div>
 
-            {{-- VISI --}}
+
             <div class="profil-section">
 
                 <h2>
@@ -447,7 +444,7 @@
 
             </div>
 
-            {{-- MISI --}}
+
             <div class="profil-section">
 
                 <h2>
@@ -490,7 +487,7 @@
 
             </div>
 
-            {{-- ALAMAT & KONTAK --}}
+
             <div class="profil-section">
 
                 <h2>
@@ -536,7 +533,7 @@
 
             </div>
 
-            {{-- FOOTER --}}
+         
             <div class="profil-footer">
 
                 © 2026 SMK YPC Tasikmalaya

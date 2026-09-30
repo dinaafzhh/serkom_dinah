@@ -36,7 +36,7 @@
                 @csrf
                 @method('PUT')
 
-                {{-- NAMA GURU --}}
+
                 <div class="mb-3">
 
                     <label
@@ -65,7 +65,7 @@
 
                 </div>
 
-                {{-- NIP --}}
+
                 <div class="mb-3">
 
                     <label
@@ -98,7 +98,7 @@
 
                 </div>
 
-                {{-- MATA PELAJARAN --}}
+
                 <div class="mb-3">
 
                     <label
@@ -127,7 +127,7 @@
 
                 </div>
 
-                {{-- FOTO LAMA --}}
+
                 <div class="mb-3">
 
                     <label class="form-label fw-semibold">
@@ -161,7 +161,7 @@
 
                 </div>
 
-                {{-- FOTO BARU --}}
+
                 <div class="mb-4">
 
                     <label
@@ -192,7 +192,7 @@
 
                 </div>
 
-                {{-- BUTTON --}}
+              
                 <div class="d-flex gap-2">
 
                     <a
