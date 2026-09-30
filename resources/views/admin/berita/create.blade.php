@@ -29,7 +29,6 @@
 
                 @csrf
 
-                {{-- JUDUL BERITA --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Judul Berita
@@ -47,7 +46,6 @@
                     @enderror
                 </div>
 
-                {{-- ISI BERITA --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Isi Berita
@@ -63,7 +61,6 @@
                     @enderror
                 </div>
 
-                {{-- TANGGAL --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Tanggal
@@ -80,7 +77,6 @@
                     @enderror
                 </div>
 
-                {{-- GAMBAR --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Gambar Berita
@@ -102,7 +98,6 @@
                     @enderror
                 </div>
 
-                {{-- STATUS --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Status
@@ -131,7 +126,6 @@
                     @enderror
                 </div>
 
-                {{-- PENULIS --}}
                 <div class="mb-4">
                     <label for="penulis" class="form-label fw-semibold">
                         Penulis
@@ -153,7 +147,6 @@
 
                     </datalist>
 
-                    {{-- ID USER YANG AKAN DIKIRIM KE DATABASE --}}
                     <input type="hidden"
                            name="id_user"
                            id="id_user"
@@ -170,7 +163,6 @@
                     @enderror
                 </div>
 
-                {{-- TOMBOL --}}
                 <div class="d-flex gap-2">
 
                     <button type="submit" class="btn btn-primary">

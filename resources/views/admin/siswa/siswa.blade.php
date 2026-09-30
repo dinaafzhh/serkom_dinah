@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER HALAMAN --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h4 class="fw-bold mb-1">Data Siswa</h4>
@@ -20,7 +19,6 @@
         </a>
     </div>
 
-    {{-- ALERT NOTIFIKASI --}}
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show"
              role="alert">
@@ -35,7 +33,6 @@
         </div>
     @endif
 
-    {{-- TABEL DATA SISWA --}}
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -65,22 +62,20 @@
 
                             <tr>
 
-                                {{-- NOMOR --}}
+
                                 <td class="text-center">
                                     {{ $siswa->firstItem() + $index }}
                                 </td>
 
-                                {{-- NISN --}}
                                 <td>
                                     {{ $item->nisn }}
                                 </td>
 
-                                {{-- NAMA SISWA --}}
                                 <td class="fw-semibold">
                                     {{ $item->nama_siswa }}
                                 </td>
 
-                                {{-- JENIS KELAMIN --}}
+                              
                                 <td class="text-center">
                                     @if($item->jenis_kelamin == 'L')
                                         <span class="badge bg-primary-subtle text-primary px-2 py-2">

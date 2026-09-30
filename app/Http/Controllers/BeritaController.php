@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
-    // =========================
-    // MENAMPILKAN DATA BERITA
-    // =========================
+
     public function index()
     {
         $berita = Berita::with('user')
@@ -22,9 +20,6 @@ class BeritaController extends Controller
     }
 
 
-    // =========================
-    // FORM TAMBAH BERITA
-    // =========================
     public function create()
     {
         $users = User::all();
@@ -33,9 +28,6 @@ class BeritaController extends Controller
     }
 
 
-    // =========================
-    // SIMPAN BERITA
-    // =========================
     public function store(Request $request)
     {
         $request->validate([
@@ -69,9 +61,7 @@ class BeritaController extends Controller
     }
 
 
-    // =========================
-    // DETAIL BERITA
-    // =========================
+
     public function show(string $id)
     {
         $berita = Berita::with('user')
@@ -82,9 +72,6 @@ class BeritaController extends Controller
     }
 
 
-    // =========================
-    // FORM EDIT BERITA
-    // =========================
     public function edit(string $id)
     {
         $berita = Berita::where('id_berita', $id)

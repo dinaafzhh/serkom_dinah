@@ -4,7 +4,7 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER --}}
+
     <div class="mb-4">
         <h4 class="fw-bold mb-1">
             Edit Ekstrakurikuler
@@ -15,8 +15,6 @@
         </p>
     </div>
 
-
-    {{-- ERROR --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Data belum berhasil disimpan.</strong>
@@ -30,7 +28,6 @@
     @endif
 
 
-    {{-- CARD --}}
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -54,8 +51,6 @@
 
                 @method('PUT')
 
-
-                {{-- NAMA EKSKUL --}}
                 <div class="mb-3">
 
                     <label for="nama_ekskul"
@@ -84,7 +79,6 @@
                 </div>
 
 
-                {{-- PEMBINA --}}
                 <div class="mb-3">
 
                     <label for="pembina"
@@ -112,8 +106,6 @@
 
                 </div>
 
-
-                {{-- JADWAL --}}
                 <div class="mb-3">
 
                     <label for="jadwal_latihan"
@@ -142,7 +134,6 @@
                 </div>
 
 
-                {{-- DESKRIPSI --}}
                 <div class="mb-3">
 
                     <label for="deskripsi"
@@ -169,7 +160,6 @@
                 </div>
 
 
-                {{-- GAMBAR SAAT INI --}}
                 <div class="mb-3">
 
                     <label class="form-label fw-semibold">
@@ -202,7 +192,6 @@
                 </div>
 
 
-                {{-- GANTI GAMBAR --}}
                 <div class="mb-4">
 
                     <label for="gambar"
@@ -234,7 +223,7 @@
                 </div>
 
 
-                {{-- BUTTON --}}
+             
                 <div class="d-flex gap-2">
 
                     <a

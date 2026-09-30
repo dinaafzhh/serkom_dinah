@@ -10,7 +10,6 @@
         padding: 10px;
     }
 
-    /* HEADER */
     .dashboard-header {
         background: linear-gradient(135deg, #374151, #e5e7eb);
         color: white;

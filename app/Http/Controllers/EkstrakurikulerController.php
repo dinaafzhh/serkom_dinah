@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class EkstrakurikulerController extends Controller
 {
-    // =========================
-    // DAFTAR EKSTRAKURIKULER
-    // =========================
+
     public function index()
     {
         $ekstrakurikuler = Ekstrakurikuler::all();
@@ -22,18 +20,14 @@ class EkstrakurikulerController extends Controller
     }
 
 
-    // =========================
-    // FORM TAMBAH
-    // =========================
+
     public function create()
     {
         return view('admin.ektrakurikuler.create');
     }
 
 
-    // =========================
-    // SIMPAN DATA
-    // =========================
+
     public function store(Request $request)
     {
         $request->validate([
@@ -68,9 +62,7 @@ class EkstrakurikulerController extends Controller
     }
 
 
-    // =========================
-    // FORM EDIT
-    // =========================
+
     public function edit($id)
     {
         $ekstrakurikuler = Ekstrakurikuler::where(
@@ -85,9 +77,7 @@ class EkstrakurikulerController extends Controller
     }
 
 
-    // =========================
-    // UPDATE DATA
-    // =========================
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -104,11 +94,11 @@ class EkstrakurikulerController extends Controller
         )->firstOrFail();
 
 
-        // GAMBAR LAMA
+
         $gambar = $ekstrakurikuler->gambar;
 
 
-        // JIKA GANTI GAMBAR
+
         if ($request->hasFile('gambar')) {
 
             if ($ekstrakurikuler->gambar) {
@@ -122,7 +112,7 @@ class EkstrakurikulerController extends Controller
         }
 
 
-        // UPDATE
+
         $ekstrakurikuler->update([
             'nama_ekskul' => $request->nama_ekskul,
             'pembina' => $request->pembina,
@@ -141,9 +131,7 @@ class EkstrakurikulerController extends Controller
     }
 
 
-    // =========================
-    // HAPUS DATA
-    // =========================
+
     public function destroy($id)
     {
         $ekstrakurikuler = Ekstrakurikuler::where(
@@ -152,7 +140,7 @@ class EkstrakurikulerController extends Controller
         )->firstOrFail();
 
 
-        // HAPUS GAMBAR
+       
         if ($ekstrakurikuler->gambar) {
 
             Storage::disk('public')->delete(

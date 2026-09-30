@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
@@ -27,8 +26,6 @@
 
     </div>
 
-
-    {{-- ALERT --}}
     @if(session('success'))
 
         <div class="alert alert-success alert-dismissible fade show">
@@ -46,8 +43,6 @@
 
     @endif
 
-
-    {{-- CARD --}}
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -107,14 +102,10 @@
                         @forelse($ekstrakurikuler as $index => $item)
 
                             <tr>
-
-                                {{-- NO --}}
                                 <td class="text-center">
                                     {{ $index + 1 }}
                                 </td>
 
-
-                                {{-- GAMBAR --}}
                                 <td class="text-center">
 
                                     @if($item->gambar)
@@ -144,8 +135,6 @@
 
                                 </td>
 
-
-                                {{-- NAMA EKSKUL --}}
                                 <td>
 
                                     <div class="fw-semibold">
@@ -158,14 +147,10 @@
 
                                 </td>
 
-
-                                {{-- PEMBINA --}}
                                 <td>
                                     {{ $item->pembina }}
                                 </td>
 
-
-                                {{-- JADWAL --}}
                                 <td>
 
                                     <span class="badge bg-light text-dark border">
@@ -178,8 +163,6 @@
 
                                 </td>
 
-
-                                {{-- DESKRIPSI --}}
                                 <td>
 
                                     @if($item->deskripsi)
@@ -199,7 +182,6 @@
                                 </td>
 
 
-                                {{-- AKSI --}}
                                 <td>
 
                                     <div class="d-flex justify-content-center gap-2">
@@ -272,7 +254,6 @@
 </div>
 
 
-{{-- CSS DESKRIPSI --}}
 <style>
 
     .deskripsi-singkat {

@@ -8,13 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    // Menampilkan halaman login
     public function index()
     {
         return view('auth.login');
     }
 
-    // Proses login
+
     public function login(Request $request)
     {
         $request->validate([
@@ -22,12 +21,11 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        // Cari user berdasarkan username
         $user = DB::table('user')
             ->where('username', $request->username)
             ->first();
 
-        // Jika user tidak ditemukan
+
         if (!$user) {
             return back()
                 ->with('error', 'Username atau password salah!')
@@ -36,30 +34,29 @@ class LoginController extends Controller
 
         $passwordCocok = false;
 
-        // Cek apakah password sudah berbentuk hash
+
         if (
             str_starts_with($user->password, '$2y$') ||
             str_starts_with($user->password, '$argon2i$') ||
             str_starts_with($user->password, '$argon2id$')
         ) {
-            // Password sudah di-hash
+
             $passwordCocok = Hash::check(
                 $request->password,
                 $user->password
             );
         } else {
-            // Password masih berupa teks biasa
+
             $passwordCocok = ($request->password === $user->password);
         }
 
-        // Jika password salah
+
         if (!$passwordCocok) {
             return back()
                 ->with('error', 'Username atau password salah!')
                 ->withInput($request->only('username'));
         }
 
-        // Jika password masih teks biasa, ubah menjadi hash
         if (
             !str_starts_with($user->password, '$2y$') &&
             !str_starts_with($user->password, '$argon2i$') &&
@@ -72,7 +69,7 @@ class LoginController extends Controller
                 ]);
         }
 
-        // Regenerasi session
+
         $request->session()->regenerate();
 
         // Simpan data user ke session
@@ -82,7 +79,7 @@ class LoginController extends Controller
             'role' => $user->role,
         ]);
 
-        // Masuk ke dashboard
+       
         return redirect()->route('admin.dashboard');
     }
 

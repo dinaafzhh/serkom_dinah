@@ -28,7 +28,7 @@
 
                 @csrf
 
-                {{-- NAMA EKSKUL --}}
+                
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Nama Ekstrakurikuler

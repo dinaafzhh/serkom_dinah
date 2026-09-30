@@ -4,7 +4,7 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER --}}
+
     <div class="mb-4">
         <h4 class="fw-bold mb-1">
             Edit Berita
@@ -16,7 +16,6 @@
     </div>
 
 
-    {{-- ERROR --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Data belum berhasil disimpan.</strong>
@@ -73,7 +72,6 @@
                 </div>
 
 
-                {{-- ISI BERITA --}}
                 <div class="mb-3">
 
                     <label
@@ -100,7 +98,7 @@
                 </div>
 
 
-                {{-- TANGGAL --}}
+
                 <div class="mb-3">
 
                     <label
@@ -128,7 +126,7 @@
                 </div>
 
 
-                {{-- GAMBAR --}}
+
                 <div class="mb-3">
 
                     <label class="form-label fw-semibold">
@@ -188,7 +186,7 @@
                 </div>
 
 
-                {{-- STATUS --}}
+
                 <div class="mb-3">
 
                     <label
@@ -230,7 +228,7 @@
                 </div>
 
 
-                {{-- PENULIS --}}
+
                 <div class="mb-4">
 
                     <label
@@ -269,7 +267,7 @@
                 </div>
 
 
-                {{-- BUTTON --}}
+              
                 <div class="d-flex gap-2">
 
                     <button

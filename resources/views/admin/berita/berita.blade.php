@@ -26,7 +26,7 @@
     </div>
 
 
-    {{-- SUCCESS --}}
+
     @if(session('success'))
 
         <div class="alert alert-success alert-dismissible fade show">
@@ -41,7 +41,7 @@
     @endif
 
 
-    {{-- CARD --}}
+
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -106,13 +106,12 @@
 
                             <tr>
 
-                                {{-- NO --}}
+
                                 <td class="text-center">
                                     {{ $index + 1 }}
                                 </td>
 
 
-                                {{-- GAMBAR --}}
                                 <td class="text-center">
 
                                     @if($item->gambar)
@@ -140,7 +139,7 @@
                                 </td>
 
 
-                                {{-- JUDUL --}}
+
                                 <td>
 
                                     <div class="fw-semibold">
@@ -150,7 +149,7 @@
                                 </td>
 
 
-                                {{-- ISI BERITA --}}
+
                                 <td>
 
                                     @if($item->isi)
@@ -170,7 +169,7 @@
                                 </td>
 
 
-                                {{-- TANGGAL --}}
+
                                 <td class="text-center">
 
                                     {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}
@@ -178,7 +177,7 @@
                                 </td>
 
 
-                                {{-- PENULIS --}}
+
                                 <td>
 
                                     @if($item->user)
@@ -196,7 +195,7 @@
                                 </td>
 
 
-                                {{-- STATUS --}}
+
                                 <td class="text-center">
 
                                     @if($item->status == 'Publish')
@@ -216,12 +215,10 @@
                                 </td>
 
 
-                                {{-- AKSI --}}
                                 <td>
 
                                     <div class="d-flex justify-content-center gap-2">
 
-                                        {{-- EDIT --}}
                                         <a
                                             href="{{ route('admin.berita.edit', ['id' => $item->id_berita]) }}"
                                             class="btn btn-sm btn-warning"
@@ -231,7 +228,6 @@
                                         </a>
 
 
-                                        {{-- HAPUS --}}
                                         <form
                                             action="{{ route('admin.berita.destroy', ['id' => $item->id_berita]) }}"
                                             method="POST"

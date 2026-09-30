@@ -38,7 +38,6 @@
                     @enderror
                 </div>
 
-                {{-- NAMA --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Nama Siswa
@@ -58,7 +57,6 @@
                     @enderror
                 </div>
 
-                {{-- JENIS KELAMIN --}}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">
                         Jenis Kelamin
@@ -89,7 +87,6 @@
                     @enderror
                 </div>
 
-                {{-- TAHUN MASUK --}}
                 <div class="mb-4">
                     <label class="form-label fw-semibold">
                         Tahun Masuk
@@ -110,7 +107,6 @@
                     @enderror
                 </div>
 
-                {{-- BUTTON --}}
                 <div class="d-flex gap-2">
 
                     <a href="{{ route('admin.siswa.siswa') }}"

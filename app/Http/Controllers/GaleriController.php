@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
-    /**
-     * Menampilkan semua galeri
-     */
+
     public function index()
     {
         $galeri = Galeri::orderBy('id_galeri', 'desc')->get();
@@ -18,17 +16,12 @@ class GaleriController extends Controller
         return view('admin.galeri.galeri', compact('galeri'));
     }
 
-    /**
-     * Menampilkan form tambah galeri
-     */
+
     public function create()
     {
         return view('admin.galeri.create');
     }
 
-    /**
-     * Menyimpan galeri baru
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -58,9 +51,7 @@ class GaleriController extends Controller
             ->with('success', 'Data galeri berhasil ditambahkan!');
     }
 
-    /**
-     * Menampilkan detail galeri
-     */
+
     public function show(string $id)
     {
         $galeri = Galeri::findOrFail($id);
@@ -68,9 +59,7 @@ class GaleriController extends Controller
         return view('admin.galeri.show', compact('galeri'));
     }
 
-    /**
-     * Menampilkan form edit galeri
-     */
+
     public function edit(string $id)
     {
         $galeri = Galeri::findOrFail($id);
@@ -78,9 +67,7 @@ class GaleriController extends Controller
         return view('admin.galeri.edit', compact('galeri'));
     }
 
-    /**
-     * Memperbarui galeri
-     */
+    
     public function update(Request $request, string $id)
     {
         $galeri = Galeri::findOrFail($id);

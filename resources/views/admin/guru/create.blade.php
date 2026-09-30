@@ -4,7 +4,7 @@
 
 <div class="container-fluid px-4 py-4">
 
-   
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="h3 mb-1 text-dark fw-bold">Tambah Guru</h1>
@@ -41,8 +41,6 @@
                   enctype="multipart/form-data">
 
                 @csrf
-
-                {{-- NAMA GURU --}}
                 <div class="mb-3">
                     <label for="nama_guru" class="form-label fw-semibold">
                         Nama Guru
@@ -59,7 +57,6 @@
                     >
                 </div>
 
-                {{-- NIP --}}
                 <div class="mb-3">
                     <label for="nip" class="form-label fw-semibold">
                         NIP
