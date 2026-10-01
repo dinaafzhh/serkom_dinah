@@ -408,7 +408,7 @@
                     <div>
 
                         <h6>
-                            Jenjang Pendidikan
+                           Jenjang pendidikan
                         </h6>
 
                         <p>

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
-
     public function index()
     {
         $berita = Berita::with('user')
@@ -17,6 +16,30 @@ class BeritaController extends Controller
             ->get();
 
         return view('admin.berita.berita', compact('berita'));
+    }
+
+    public function landing()
+    {
+        $berita = Berita::where('status', 'Publish')
+            ->orderBy('tanggal', 'desc')
+            ->first();
+
+        return view('landing', compact('berita'));
+    }
+
+    public function detail(string $id)
+    {
+        $berita = Berita::with('user')
+            ->where('id_berita', $id)
+            ->where('status', 'Publish')
+            ->firstOrFail();
+
+        $beritaLainnya = Berita::where('status', 'Publish')
+            ->where('id_berita', '!=', $id)
+            ->orderBy('tanggal', 'desc')
+            ->get();
+
+        return view('admin.berita.detail', compact('berita', 'beritaLainnya'));
     }
 
     public function create()
@@ -66,7 +89,6 @@ class BeritaController extends Controller
         return view('admin.berita.show', compact('berita'));
     }
 
-
     public function edit(string $id)
     {
         $berita = Berita::where('id_berita', $id)
@@ -82,7 +104,6 @@ class BeritaController extends Controller
 
     public function update(Request $request, string $id)
     {
-        // Cari berdasarkan primary key id_berita
         $berita = Berita::where('id_berita', $id)
             ->firstOrFail();
 
@@ -102,7 +123,6 @@ class BeritaController extends Controller
         $berita->id_user = $request->id_user;
 
         if ($request->hasFile('gambar')) {
-
             if ($berita->gambar) {
                 Storage::disk('public')->delete($berita->gambar);
             }
@@ -123,7 +143,6 @@ class BeritaController extends Controller
         $berita = Berita::where('id_berita', $id)
             ->firstOrFail();
 
-        // Hapus gambar
         if ($berita->gambar) {
             Storage::disk('public')->delete($berita->gambar);
         }

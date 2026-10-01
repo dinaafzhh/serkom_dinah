@@ -4,7 +4,6 @@
 
 <div class="container-fluid py-4">
 
-    {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
@@ -27,8 +26,6 @@
 
     </div>
 
-
-    {{-- PESAN SUCCESS --}}
     @if(session('success'))
 
         <div class="alert alert-success alert-dismissible fade show"
@@ -46,8 +43,6 @@
 
     @endif
 
-
-    {{-- FILTER JENIS KELAMIN --}}
     <div class="card border-0 shadow-sm mb-4">
 
         <div class="card-body">
@@ -58,17 +53,14 @@
 
             <div class="d-flex gap-2 flex-wrap">
 
-                {{-- SEMUA --}}
                 <a href="{{ route('admin.siswa.siswa') }}"
                    class="btn {{ !request('jenis_kelamin') ? 'btn-primary' : 'btn-outline-primary' }}">
 
                     <i class="bi bi-people-fill me-1"></i>
                     Semua
-
+                    
                 </a>
 
-
-                {{-- LAKI-LAKI --}}
                 <a href="{{ route('admin.siswa.siswa', ['jenis_kelamin' => 'Laki-Laki']) }}"
                    class="btn {{ request('jenis_kelamin') == 'Laki-Laki' ? 'btn-primary' : 'btn-outline-primary' }}">
 
@@ -77,8 +69,6 @@
 
                 </a>
 
-
-                {{-- PEREMPUAN --}}
                 <a href="{{ route('admin.siswa.siswa', ['jenis_kelamin' => 'Perempuan']) }}"
                    class="btn {{ request('jenis_kelamin') == 'Perempuan' ? 'btn-danger' : 'btn-outline-danger' }}">
 
@@ -93,8 +83,6 @@
 
     </div>
 
-
-    {{-- DATA SISWA --}}
     <div class="card border-0 shadow-sm">
 
         <div class="card-header bg-white py-3">
@@ -114,7 +102,6 @@
             </h5>
 
         </div>
-
 
         <div class="card-body">
 
@@ -154,32 +141,24 @@
 
                     </thead>
 
-
                     <tbody>
 
                         @forelse($siswa as $index => $item)
 
                             <tr>
 
-                                {{-- NOMOR --}}
                                 <td class="text-center">
                                     {{ $siswa->firstItem() + $index }}
                                 </td>
 
-
-                                {{-- NISN --}}
                                 <td>
                                     {{ $item->nisn }}
                                 </td>
 
-
-                                {{-- NAMA --}}
                                 <td class="fw-semibold">
                                     {{ $item->nama_siswa }}
                                 </td>
 
-
-                                {{-- JENIS KELAMIN --}}
                                 <td class="text-center">
 
                                     @if($item->jenis_kelamin == 'Laki-Laki')
@@ -214,8 +193,6 @@
 
                                 </td>
 
-
-                                {{-- TAHUN MASUK --}}
                                 <td class="text-center">
 
                                     <span class="badge bg-primary-subtle text-primary px-2 py-2">
@@ -226,11 +203,7 @@
 
                                 </td>
 
-
-                                {{-- AKSI --}}
                                 <td class="text-center">
-
-                                    {{-- EDIT --}}
                                     <a href="{{ route('admin.siswa.edit', ['siswa' => $item->id_siswa]) }}"
                                        class="btn btn-sm btn-warning text-white me-1"
                                        title="Edit">
@@ -239,8 +212,6 @@
 
                                     </a>
 
-
-                                    {{-- HAPUS --}}
                                     <form action="{{ route('admin.siswa.destroy', ['siswa' => $item->id_siswa]) }}"
                                           method="POST"
                                           class="d-inline"
