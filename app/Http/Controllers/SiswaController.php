@@ -7,18 +7,32 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        $siswa = Siswa::orderBy('nama_siswa', 'asc')->paginate(10);
+        $query = Siswa::query();
+
+        // Filter jenis kelamin
+        if ($request->jenis_kelamin) {
+            $query->where(
+                'jenis_kelamin',
+                $request->jenis_kelamin
+            );
+        }
+
+        $siswa = $query
+            ->orderBy('nama_siswa', 'asc')
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admin.siswa.siswa', compact('siswa'));
     }
+
 
     public function create()
     {
         return view('admin.siswa.create');
     }
+
 
     public function store(Request $request)
     {
@@ -44,8 +58,9 @@ class SiswaController extends Controller
 
     public function show(Siswa $siswa)
     {
-        //
+        return view('admin.siswa.siswa', compact('siswa'));
     }
+
 
     public function edit(Siswa $siswa)
     {

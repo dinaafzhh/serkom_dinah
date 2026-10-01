@@ -57,7 +57,6 @@
         margin: 0 0 20px;
     }
 
-    /* TOMBOL KELOLA USER */
     .btn-kelola-user {
         display: inline-flex;
         align-items: center;
@@ -308,7 +307,6 @@
 
         </div>
 
-
         <div class="profil-content">
 
             <div class="profil-section">
@@ -533,7 +531,7 @@
 
             </div>
 
-         
+
             <div class="profil-footer">
 
                 © 2026 SMK YPC Tasikmalaya

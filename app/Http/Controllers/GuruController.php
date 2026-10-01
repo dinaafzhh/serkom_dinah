@@ -11,7 +11,7 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $gurus = Guru::all();
+        $gurus = Guru::orderBy('nama_guru', 'asc')->get();
 
         return view('admin.guru.guru', compact('gurus'));
     }
@@ -117,4 +117,3 @@ class GuruController extends Controller
             ->with('success', 'Data guru berhasil dihapus!');
     }
 }
-

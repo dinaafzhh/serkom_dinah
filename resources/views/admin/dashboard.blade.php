@@ -10,6 +10,7 @@
         padding: 10px;
     }
 
+    /* HEADER */
     .dashboard-header {
         background: linear-gradient(135deg, #374151, #e5e7eb);
         color: white;
@@ -53,6 +54,7 @@
         opacity: 0.15;
     }
 
+    /* CARD TOTAL */
     .dashboard-card {
         border: none !important;
         border-radius: 14px;
@@ -123,6 +125,7 @@
         color: #777;
     }
 
+    /* INFORMASI SEKOLAH */
     .dashboard-section {
         margin-top: 25px;
     }
@@ -196,44 +199,6 @@
         font-size: 14px;
     }
 
-    .quick-menu {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .quick-menu a {
-        text-decoration: none;
-        color: #333;
-        background: #f3f4f6;
-        padding: 18px 12px;
-        border-radius: 12px;
-        text-align: center;
-        transition: 0.3s;
-    }
-
-    .quick-menu a:hover {
-        background: linear-gradient(135deg, #374151, #e5e7eb);
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    .quick-menu a:hover i {
-        color: white;
-    }
-
-    .quick-menu i {
-        display: block;
-        font-size: 25px;
-        margin-bottom: 8px;
-        color: #6b7280;
-    }
-
-    .quick-menu span {
-        font-size: 13px;
-        font-weight: 600;
-    }
-
     @media (max-width: 768px) {
 
         .dashboard-header {
@@ -246,10 +211,6 @@
 
         .dashboard-header .school-icon {
             display: none;
-        }
-
-        .quick-menu {
-            grid-template-columns: repeat(2, 1fr);
         }
     }
 </style>
@@ -271,6 +232,7 @@
     </div>
 
     <div class="row g-4">
+
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -284,7 +246,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div>
-                            <h3>1400</h3>
+                            <h3>{{ $totalSiswa }}</h3>
                             <p>Total Siswa</p>
                         </div>
 
@@ -298,8 +260,6 @@
 
         </div>
 
-
-        {{-- TOTAL GURU --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -313,7 +273,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div>
-                            <h3>56</h3>
+                            <h3>{{ $totalGuru }}</h3>
                             <p>Total Guru</p>
                         </div>
 
@@ -327,8 +287,6 @@
 
         </div>
 
-
-        {{-- TOTAL BERITA --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -342,7 +300,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div>
-                            <h3>5</h3>
+                            <h3>{{ $totalBerita }}</h3>
                             <p>Total Berita</p>
                         </div>
 
@@ -356,8 +314,6 @@
 
         </div>
 
-
-        {{-- TOTAL EKSTRAKURIKULER --}}
         <div class="col-xl-3 col-md-6">
 
             <div class="dashboard-card">
@@ -371,7 +327,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div>
-                            <h3>10</h3>
+                            <h3>{{ $totalEkstrakurikuler }}</h3>
                             <p>Total Ekstrakurikuler</p>
                         </div>
 
@@ -387,178 +343,97 @@
 
     </div>
 
-
-    {{-- BAGIAN BAWAH --}}
     <div class="dashboard-section">
 
-        <div class="row g-4">
+        <div class="section-card">
 
-            {{-- INFORMASI SEKOLAH --}}
-            <div class="col-lg-7">
+            <div class="section-card-header">
 
-                <div class="section-card">
+                <h5>
+                    <i class="fa-solid fa-school me-2"></i>
+                    Informasi Sekolah
+                </h5>
 
-                    <div class="section-card-header">
+            </div>
 
-                        <h5>
-                            <i class="fa-solid fa-school me-2"></i>
-                            Informasi Sekolah
-                        </h5>
 
+            <div class="section-card-body">
+
+                <div class="school-info">
+
+                    <div class="school-info-icon">
+                        <i class="fa-solid fa-building"></i>
                     </div>
 
+                    <div>
 
-                    <div class="section-card-body">
+                        <h6>
+                            Nama Sekolah
+                        </h6>
 
-                        {{-- NAMA SEKOLAH --}}
-                        <div class="school-info">
-
-                            <div class="school-info-icon">
-                                <i class="fa-solid fa-building"></i>
-                            </div>
-
-                            <div>
-
-                                <h6>
-                                    Nama Sekolah
-                                </h6>
-
-                                <p>
-                                    SMK YPC Tasikmalaya
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        {{-- LOKASI --}}
-                        <div class="school-info">
-
-                            <div class="school-info-icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-
-                            <div>
-
-                                <h6>
-                                    Lokasi
-                                </h6>
-
-                                <p>
-                                    Tasikmalaya, Jawa Barat
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        {{-- JENJANG --}}
-                        <div class="school-info">
-
-                            <div class="school-info-icon">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-
-                            <div>
-
-                                <h6>
-                                    Jenjang Pendidikan
-                                </h6>
-
-                                <p>
-                                    Sekolah Menengah Kejuruan
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        {{-- SISTEM --}}
-                        <div class="school-info">
-
-                            <div class="school-info-icon">
-                                <i class="fa-solid fa-laptop-code"></i>
-                            </div>
-
-                            <div>
-
-                                <h6>
-                                    Sistem Informasi
-                                </h6>
-
-                                <p>
-                                    Pengelolaan data dan informasi sekolah
-                                </p>
-
-                            </div>
-
-                        </div>
+                        <p>
+                            SMK YPC Tasikmalaya
+                        </p>
 
                     </div>
 
                 </div>
 
-            </div>
+                <div class="school-info">
 
+                    <div class="school-info-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
 
-            {{-- MENU CEPAT --}}
-            <div class="col-lg-5">
+                    <div>
 
-                <div class="section-card">
+                        <h6>
+                            Lokasi
+                        </h6>
 
-                    <div class="section-card-header">
-
-                        <h5>
-                            <i class="fa-solid fa-bolt me-2"></i>
-                            Menu Cepat
-                        </h5>
+                        <p>
+                            Tasikmalaya, Jawa Barat
+                        </p>
 
                     </div>
 
+                </div>
 
-                    <div class="section-card-body">
+                <div class="school-info">
 
-                        <div class="quick-menu">
+                    <div class="school-info-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
 
-                            <a href="/profil">
-                                <i class="fa-solid fa-school"></i>
-                                <span>Profil Sekolah</span>
-                            </a>
+                    <div>
 
-                            <a href="/guru">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                <span>Data Guru</span>
-                            </a>
+                        <h6>
+                            Jenjang Pendidikan
+                        </h6>
 
-                            <a href="/siswa">
-                                <i class="fa-solid fa-users"></i>
-                                <span>Data Siswa</span>
-                            </a>
+                        <p>
+                            Sekolah Menengah Kejuruan
+                        </p>
 
-                            <a href="/berita">
-                                <i class="fa-solid fa-newspaper"></i>
-                                <span>Berita</span>
-                            </a>
+                    </div>
 
-                            <a href="/galeri">
-                                <i class="fa-solid fa-images"></i>
-                                <span>Galeri</span>
-                            </a>
+                </div>
 
-                            <a href="/ekstrakurikuler">
-                                <i class="fa-solid fa-puzzle-piece"></i>
-                                <span>Ekstrakurikuler</span>
-                            </a>
+                <div class="school-info">
 
-                            <a href="/user">
-                                <i class="fa-solid fa-user-gear"></i>
-                                <span>Kelola User</span>
-                            </a>
+                    <div class="school-info-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
 
-                        </div>
+                    <div>
+
+                        <h6>
+                            Sistem Informasi
+                        </h6>
+
+                        <p>
+                            Pengelolaan data dan informasi sekolah
+                        </p>
 
                     </div>
 
@@ -573,7 +448,3 @@
 </div>
 
 @endsection
-
-
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">

@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\UserController;
@@ -49,7 +48,6 @@ Route::delete('/guru/{guru}', [GuruController::class, 'destroy'])->name('admin.g
 Route::get('/siswa', [SiswaController::class, 'index'])->name('admin.siswa.siswa');
 Route::get('/siswa/create', [SiswaController::class, 'create'])->name('admin.siswa.create');
 Route::post('/siswa', [SiswaController::class, 'store'])->name('admin.siswa.store');
-Route::get('/siswa/{siswa}', [SiswaController::class, 'show'])->name('admin.siswa.show');
 Route::get('/siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('admin.siswa.edit');
 Route::put('/siswa/{siswa}', [SiswaController::class, 'update'])->name('admin.siswa.update');
 Route::delete('/siswa/{siswa}', [SiswaController::class, 'destroy'])->name('admin.siswa.destroy');

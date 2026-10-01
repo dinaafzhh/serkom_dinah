@@ -1,84 +1,163 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid py-4">
+
+<div class="container-fluid px-4 py-4">
+
+    {{-- HEADER --}}
     <div class="mb-4">
-        <h4 class="fw-bold mb-1">Tambah User Baru</h4>
-        <p class="text-muted mb-3">Tambahkan akun pengguna baru untuk mengelola sistem Profil Sekolah.</p>
-        <a href="{{ route('admin.user.user') }}" class="btn btn-light btn-sm">
-            <i class="bi bi-arrow-left"></i> Kembali ke Daftar User
-        </a>
+        <h4 class="fw-bold mb-1">Tambah Siswa</h4>
+        <p class="text-muted mb-0">
+            Tambahkan data siswa baru
+        </p>
     </div>
 
+
+    {{-- FORM --}}
     <div class="card border-0 shadow-sm">
+
         <div class="card-body p-4">
 
-            <form action="{{ route('admin.user.store') }}" method="POST">
+            <form action="{{ route('admin.siswa.store') }}" method="POST">
+
                 @csrf
 
+                {{-- NISN --}}
                 <div class="mb-3">
-                    <label for="username" class="form-label fw-semibold">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value="{{ old('username') }}"
-                        class="form-control @error('username') is-invalid @enderror"
-                        placeholder="Masukkan username"
-                        required
-                    >
-                    @error('username')
+
+                    <label class="form-label fw-semibold">
+                        NISN
+                    </label>
+
+                    <input type="text"
+                           name="nisn"
+                           class="form-control @error('nisn') is-invalid @enderror"
+                           value="{{ old('nisn') }}"
+                           maxlength="10"
+                           placeholder="Masukkan NISN"
+                           required>
+
+                    @error('nisn')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
+
                 </div>
 
+
+                {{-- NAMA --}}
                 <div class="mb-3">
-                    <label for="password" class="form-label fw-semibold">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        class="form-control @error('password') is-invalid @enderror"
-                        placeholder="Masukkan password"
-                        required
-                    >
-                    @error('password')
+
+                    <label class="form-label fw-semibold">
+                        Nama Siswa
+                    </label>
+
+                    <input type="text"
+                           name="nama_siswa"
+                           class="form-control @error('nama_siswa') is-invalid @enderror"
+                           value="{{ old('nama_siswa') }}"
+                           maxlength="40"
+                           placeholder="Masukkan nama siswa"
+                           required>
+
+                    @error('nama_siswa')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
+
                 </div>
 
 
-                <div class="mb-4">
-                    <label for="role" class="form-label fw-semibold">Role Pengguna</label>
-                    <select id="role" name="role" class="form-select @error('role') is-invalid @enderror" required>
-                        <option value="">-- Pilih Role --</option>
-                        <option value="Admin" {{ old('role') == 'Admin' ? 'selected' : '' }}>Admin</option>
-                        <option value="Operator" {{ old('role') == 'Operator' ? 'selected' : '' }}>Operator</option>
+                {{-- JENIS KELAMIN --}}
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Jenis Kelamin
+                    </label>
+
+                    <select name="jenis_kelamin"
+                            class="form-select @error('jenis_kelamin') is-invalid @enderror"
+                            required>
+
+                        <option value="">
+                            -- Pilih Jenis Kelamin --
+                        </option>
+
+                        <option value="Laki-Laki"
+                            {{ old('jenis_kelamin') == 'Laki-Laki' ? 'selected' : '' }}>
+                            Laki-Laki
+                        </option>
+
+                        <option value="Perempuan"
+                            {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>
+                            Perempuan
+                        </option>
+
                     </select>
-                    @error('role')
+
+                    @error('jenis_kelamin')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
+
                 </div>
 
+
+                {{-- TAHUN MASUK --}}
+                <div class="mb-4">
+
+                    <label class="form-label fw-semibold">
+                        Tahun Masuk
+                    </label>
+
+                    <input type="number"
+                           name="tahun_masuk"
+                           class="form-control @error('tahun_masuk') is-invalid @enderror"
+                           value="{{ old('tahun_masuk') }}"
+                           min="1900"
+                           max="2100"
+                           placeholder="Contoh: 2024"
+                           required>
+
+                    @error('tahun_masuk')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
+
+
+                {{-- BUTTON --}}
                 <div class="d-flex gap-2">
-                    <a href="{{ route('admin.user.user') }}" class="btn btn-light px-4">
-                        Batal
+
+                    <a href="{{ route('admin.siswa.siswa') }}"
+                       class="btn btn-secondary">
+
+                        <i class="fas fa-arrow-left me-1"></i>
+                        Kembali
+
                     </a>
-                    <button type="submit" class="btn btn-dark px-4">
-                        <i class="bi bi-save me-1"></i> Simpan User
+
+                    <button type="submit"
+                            class="btn btn-primary">
+
+                        <i class="fas fa-save me-1"></i>
+                        Simpan
+
                     </button>
+
                 </div>
 
             </form>
 
         </div>
+
     </div>
 
 </div>
+
 @endsection
