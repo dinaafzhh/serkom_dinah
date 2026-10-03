@@ -45,8 +45,11 @@
             margin: auto;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 30px;
+            justify-content: center;
+        }
+
+        .brand {
+            text-align: center;
         }
 
         .brand h1 {
@@ -58,41 +61,6 @@
             margin-top: 4px;
             font-size: 13px;
             color: #6b7280;
-        }
-
-        .contact-area {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .contact {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact i {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #374151, #9ca3af);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact small {
-            display: block;
-            color: #6b7280;
-            font-size: 11px;
-            margin-bottom: 3px;
-        }
-
-        .contact strong {
-            font-size: 13px;
-            color: #374151;
         }
 
         .navbar {
@@ -683,15 +651,6 @@
                 padding: 18px 20px;
             }
 
-            .header-inner {
-                flex-direction: column;
-            }
-
-            .contact-area {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
             .nav-inner {
                 justify-content: flex-start;
             }
@@ -739,10 +698,6 @@
 
             .brand h1 {
                 font-size: 19px;
-            }
-
-            .contact-area {
-                flex-direction: column;
             }
 
             .slider {
@@ -799,65 +754,6 @@
 
 <body>
 
-<header class="top-header">
-
-    <div class="header-inner">
-
-        <div class="brand">
-
-            <h1>
-                {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
-            </h1>
-
-            <p>
-                Sekolah Menengah Kejuruan
-            </p>
-
-        </div>
-
-        <div class="contact-area">
-
-            <div class="contact">
-
-                <i class="fa-solid fa-phone"></i>
-
-                <div>
-
-                    <small>
-                        Telepon
-                    </small>
-
-                    <strong>
-                        {{ $profil->kontak ?? '0265-546717' }}
-                    </strong>
-
-                </div>
-
-            </div>
-
-            <div class="contact">
-
-                <i class="fa-solid fa-envelope"></i>
-
-                <div>
-
-                    <small>
-                        Email
-                    </small>
-
-                    <strong>
-                        info@smk-ypc.sch.id
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
 
 <nav class="navbar">
 
