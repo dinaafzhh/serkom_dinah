@@ -2,6 +2,19 @@
 
 @section('content')
 
+<style>
+
+.isi-berita {
+    max-width: 350px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+</style>
+
 <div class="container-fluid py-4">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -16,23 +29,28 @@
             </p>
         </div>
 
-        <a href="{{ route('admin.berita.create') }}"
-           class="btn btn-primary">
+        <a
+            href="{{ route('admin.berita.create') }}"
+            class="btn btn-primary"
+        >
             <i class="bi bi-plus-lg me-1"></i>
             Tambah Berita
         </a>
 
     </div>
 
-    @if(session('success'))
+    @if (session('success'))
 
         <div class="alert alert-success alert-dismissible fade show">
+
             {{ session('success') }}
 
-            <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert">
-            </button>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+            ></button>
+
         </div>
 
     @endif
@@ -57,37 +75,21 @@
 
                         <tr class="text-center">
 
-                            <th width="60">
-                                No
-                            </th>
+                            <th width="60">No</th>
 
-                            <th width="120">
-                                Gambar
-                            </th>
+                            <th width="120">Gambar</th>
 
-                            <th width="180">
-                                Judul
-                            </th>
+                            <th width="180">Judul</th>
 
-                            <th width="350">
-                                Isi Berita
-                            </th>
+                            <th width="350">Isi Berita</th>
 
-                            <th width="130">
-                                Tanggal
-                            </th>
+                            <th width="130">Tanggal</th>
 
-                            <th width="120">
-                                Penulis
-                            </th>
+                            <th width="120">Penulis</th>
 
-                            <th width="100">
-                                Status
-                            </th>
+                            <th width="100">Status</th>
 
-                            <th width="120">
-                                Aksi
-                            </th>
+                            <th width="120">Aksi</th>
 
                         </tr>
 
@@ -95,10 +97,9 @@
 
                     <tbody>
 
-                        @forelse($berita as $index => $item)
+                        @forelse ($berita as $index => $item)
 
                             <tr>
-
 
                                 <td class="text-center">
                                     {{ $index + 1 }}
@@ -106,7 +107,7 @@
 
                                 <td class="text-center">
 
-                                    @if($item->gambar)
+                                    @if ($item->gambar)
 
                                         <img
                                             src="{{ asset('storage/' . $item->gambar) }}"
@@ -131,16 +132,14 @@
                                 </td>
 
                                 <td>
-
                                     <div class="fw-semibold">
                                         {{ $item->judul }}
                                     </div>
-
                                 </td>
 
                                 <td>
 
-                                    @if($item->isi)
+                                    @if ($item->isi)
 
                                         <div class="isi-berita">
                                             {{ $item->isi }}
@@ -156,17 +155,13 @@
 
                                 </td>
 
-
-
                                 <td class="text-center">
-
                                     {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}
-
                                 </td>
 
                                 <td>
 
-                                    @if($item->user)
+                                    @if ($item->user)
 
                                         {{ $item->user->username }}
 
@@ -182,7 +177,7 @@
 
                                 <td class="text-center">
 
-                                    @if($item->status == 'Publish')
+                                    @if ($item->status == 'Publish')
 
                                         <span class="badge bg-success">
                                             Publish
@@ -209,7 +204,6 @@
                                         >
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-
 
                                         <form
                                             action="{{ route('admin.berita.destroy', ['id' => $item->id_berita]) }}"
@@ -272,25 +266,5 @@
     </div>
 
 </div>
-
-
-<style>
-
-.isi-berita {
-    max-width: 350px;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 3;
-
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
-
-    line-height: 1.5;
-
-}
-
-</style>
 
 @endsection

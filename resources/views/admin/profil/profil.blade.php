@@ -57,24 +57,63 @@
         margin: 0 0 20px;
     }
 
-    .btn-kelola-user {
+    .hero-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .btn-profil {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         padding: 10px 18px;
-        background: #ffffff;
-        color: #374151;
-        text-decoration: none;
         border-radius: 8px;
         font-size: 14px;
         font-weight: 600;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
         transition: 0.3s;
     }
 
-    .btn-kelola-user:hover {
+    .btn-edit {
+        background: white;
+        color: #374151;
+    }
+
+    .btn-edit:hover {
         background: #f3f4f6;
         color: #111827;
         transform: translateY(-2px);
+    }
+
+    .btn-delete {
+        background: #6b7280;
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background: #4b5563;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .btn-tambah {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: #374151;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .btn-tambah:hover {
+        background: #111827;
+        color: white;
     }
 
     .hero-image {
@@ -139,24 +178,11 @@
         font-style: italic;
     }
 
-    .misi-list {
-        padding-left: 22px;
-        margin: 0;
-    }
-
-    .misi-list li {
-        color: #596273;
-        font-size: 15px;
-        line-height: 2;
-        padding-left: 8px;
-        margin-bottom: 5px;
-    }
-
     .identitas-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 25px;
-        margin-bottom: 40px;
+        margin-bottom: 0;
     }
 
     .identitas-card {
@@ -208,6 +234,39 @@
         line-height: 1.9;
     }
 
+    .alert-success {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #166534;
+        border-radius: 8px;
+        padding: 13px 16px;
+        margin-bottom: 20px;
+    }
+
+    .empty-profil {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 70px 30px;
+        text-align: center;
+    }
+
+    .empty-profil i {
+        font-size: 50px;
+        color: #9ca3af;
+        margin-bottom: 15px;
+    }
+
+    .empty-profil h3 {
+        color: #374151;
+        margin-bottom: 8px;
+    }
+
+    .empty-profil p {
+        color: #6b7280;
+        margin-bottom: 20px;
+    }
+
     .profil-footer {
         text-align: center;
         margin-top: 25px;
@@ -216,7 +275,6 @@
     }
 
     @media (max-width: 768px) {
-
         .profil-page {
             padding: 15px 10px 40px;
         }
@@ -239,6 +297,10 @@
             font-size: 28px;
         }
 
+        .hero-buttons {
+            justify-content: center;
+        }
+
         .hero-image {
             width: 100%;
             height: 240px;
@@ -248,13 +310,10 @@
             padding: 30px 25px;
         }
 
-        .contact-wrapper {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
+        .contact-wrapper,
         .identitas-wrapper {
             grid-template-columns: 1fr;
+            gap: 25px;
         }
 
         .profil-section h2 {
@@ -267,261 +326,140 @@
 
     <div class="profil-container">
 
-        <div class="profil-hero">
+        @if(session('success'))
+            <div class="alert-success">
+                <i class="bi bi-check-circle me-2"></i>
+                {{ session('success') }}
+            </div>
+        @endif
 
-            <div class="hero-content">
+        @if($profil)
 
-                <div class="hero-text">
+            <div class="profil-hero">
 
-                    <div class="hero-label">
-                        Profil Sekolah
+                <div class="hero-content">
+
+                    <div class="hero-text">
+
+                        <div class="hero-label">
+                            Profil Sekolah
+                        </div>
+
+                        <h1>
+                            {{ $profil->nama_sekolah }}
+                        </h1>
+
+                        <p>
+                            {{ $profil->deskripsi ?: 'Informasi profil SMK YPC Tasikmalaya.' }}
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="{{ route('admin.profil.edit', $profil->id_profil) }}"
+                               class="btn-profil btn-edit">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit Profil
+                            </a>
+
+                            <form action="{{ route('admin.profil.destroy', $profil->id_profil) }}"
+                                  method="POST"
+                                  onsubmit="return confirm('Yakin ingin menghapus profil sekolah?')">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn-profil btn-delete">
+                                    <i class="bi bi-trash"></i>
+                                    Hapus
+                                </button>
+                            </form>
+
+                        </div>
+
                     </div>
 
-                    <h1>
-                        SMK YPC TASIKMALAYA
-                    </h1>
+                    <div class="hero-image">
+
+                        @if($profil->foto)
+                            <img src="{{ asset('storage/' . $profil->foto) }}"
+                                 alt="Foto {{ $profil->nama_sekolah }}">
+                        @else
+                            <img src="{{ asset('assets/images/smk.jpg') }}"
+                                 alt="Foto SMK YPC Tasikmalaya">
+                        @endif
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="profil-content">
+
+                <div class="profil-section">
+
+                    <h2>
+                        Tentang {{ $profil->nama_sekolah }}
+                    </h2>
 
                     <p>
-                        Sekolah Menengah Kejuruan yang berkomitmen
-                        mencetak generasi yang berkompeten, berkarakter,
-                        kreatif, dan siap menghadapi dunia kerja.
+                        {{ $profil->deskripsi ?: 'Belum ada deskripsi sekolah.' }}
                     </p>
 
-                    <a href="/user" class="btn-kelola-user">
-                        <i class="bi bi-person-gear"></i>
-                        Kelola User
-                    </a>
-
                 </div>
 
-                <div class="hero-image">
+                <div class="profil-section">
 
-                    <img
-                        src="{{ asset('assets/images/smk.jpg') }}"
-                        alt="Foto SMK YPC Tasikmalaya"
-                    >
+                    <h2>
+                        Identitas Sekolah
+                    </h2>
 
-                </div>
+                    <div class="identitas-wrapper">
 
-            </div>
+                        <div class="identitas-card">
 
-        </div>
+                            <h3>
+                                <i class="bi bi-building me-2"></i>
+                                Informasi Sekolah
+                            </h3>
 
-        <div class="profil-content">
+                            <div class="identitas-item">
+                                <strong>Nama Sekolah</strong>
+                                {{ $profil->nama_sekolah }}
+                            </div>
 
-            <div class="profil-section">
+                            <div class="identitas-item">
+                                <strong>Kepala Sekolah</strong>
+                                {{ $profil->kepala_sekolah ?: '-' }}
+                            </div>
 
-                <h2>
-                    Tentang SMK YPC Tasikmalaya
-                </h2>
+                            <div class="identitas-item">
+                                <strong>NPSN</strong>
+                                {{ $profil->npsn ?: '-' }}
+                            </div>
 
-                <p>
-                    <strong>SMK YPC Tasikmalaya</strong> merupakan
-                    sekolah menengah kejuruan yang berkomitmen dalam
-                    memberikan pendidikan dan keterampilan kepada
-                    peserta didik.
-                </p>
-
-                <p>
-                    Pendidikan di SMK YPC Tasikmalaya tidak hanya
-                    berfokus pada pengetahuan akademik, tetapi juga
-                    mengembangkan keterampilan, kedisiplinan,
-                    tanggung jawab, kreativitas, dan karakter siswa.
-                </p>
-
-                <p>
-                    Dengan pembelajaran yang sesuai dengan perkembangan
-                    teknologi dan kebutuhan dunia kerja, siswa
-                    diharapkan mampu mengembangkan potensi diri serta
-                    memiliki bekal untuk melanjutkan pendidikan maupun
-                    memasuki dunia kerja.
-                </p>
-
-            </div>
-
-
-            <div class="profil-section">
-
-                <h2>
-                    Sejarah Sekolah
-                </h2>
-
-                <p>
-                    SMK YPC Tasikmalaya hadir sebagai salah satu
-                    lembaga pendidikan kejuruan yang memberikan
-                    kesempatan kepada generasi muda untuk memperoleh
-                    pendidikan dan keterampilan sesuai dengan bidang
-                    keahlian yang dipelajari.
-                </p>
-
-                <p>
-                    Dalam perkembangannya, SMK YPC Tasikmalaya terus
-                    berupaya meningkatkan kualitas pendidikan,
-                    fasilitas pembelajaran, serta kompetensi tenaga
-                    pendidik untuk mendukung kebutuhan peserta didik.
-                </p>
-
-            </div>
-
-
-            <div class="profil-section">
-
-                <h2>
-                    Identitas Sekolah
-                </h2>
-
-                <div class="identitas-wrapper">
-
-                    <div class="identitas-card">
-
-                        <h3>
-                            <i class="bi bi-building me-2"></i>
-                            Informasi Sekolah
-                        </h3>
-
-                        <div class="identitas-item">
-                            <strong>Nama Sekolah</strong>
-                            SMK YPC Tasikmalaya
-                        </div>
-
-                        <div class="identitas-item">
-                            <strong>Jenjang Pendidikan</strong>
-                            Sekolah Menengah Kejuruan
-                        </div>
-
-                        <div class="identitas-item">
-                            <strong>Status</strong>
-                            Sekolah Menengah Kejuruan
-                        </div>
-
-                    </div>
-
-                    <div class="identitas-card">
-
-                        <h3>
-                            <i class="bi bi-geo-alt me-2"></i>
-                            Lokasi Sekolah
-                        </h3>
-
-                        <div class="identitas-item">
-                            <strong>Kabupaten/Kota</strong>
-                            Tasikmalaya
-                        </div>
-
-                        <div class="identitas-item">
-                            <strong>Provinsi</strong>
-                            Jawa Barat
-                        </div>
-
-                        <div class="identitas-item">
-                            <strong>Negara</strong>
-                            Indonesia
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="profil-section">
-
-                <h2>
-                    Visi
-                </h2>
-
-                <div class="visi-text">
-
-                    Mewujudkan pendidikan kejuruan yang mampu
-                    menghasilkan lulusan berkompeten, berkarakter,
-                    mandiri, kreatif, dan siap menghadapi perkembangan
-                    teknologi serta dunia kerja.
-
-                </div>
-
-            </div>
-
-
-            <div class="profil-section">
-
-                <h2>
-                    Misi
-                </h2>
-
-                <ol class="misi-list">
-
-                    <li>
-                        Meningkatkan kualitas pembelajaran dan
-                        keterampilan siswa.
-                    </li>
-
-                    <li>
-                        Membentuk siswa yang disiplin,
-                        bertanggung jawab, dan berkarakter.
-                    </li>
-
-                    <li>
-                        Mengembangkan kemampuan siswa sesuai dengan
-                        bidang keahlian dan kebutuhan dunia kerja.
-                    </li>
-
-                    <li>
-                        Mendorong siswa agar kreatif, inovatif,
-                        dan mandiri.
-                    </li>
-
-                    <li>
-                        Meningkatkan kualitas sarana dan prasarana
-                        pendidikan.
-                    </li>
-
-                    <li>
-                        Menciptakan lingkungan sekolah yang aman,
-                        nyaman, dan kondusif untuk belajar.
-                    </li>
-
-                </ol>
-
-            </div>
-
-
-            <div class="profil-section">
-
-                <h2>
-                    Alamat & Kontak
-                </h2>
-
-                <div class="contact-wrapper">
-
-                    <div>
-
-                        <div class="contact-title">
-                            Alamat Sekolah
-                        </div>
-
-                        <div class="contact-text">
-
-                            SMK YPC Tasikmalaya<br>
-                            Tasikmalaya<br>
-                            Jawa Barat<br>
-                            Indonesia
+                            <div class="identitas-item">
+                                <strong>Tahun Berdiri</strong>
+                                {{ $profil->tahun_berdiri ?: '-' }}
+                            </div>
 
                         </div>
 
-                    </div>
+                        <div class="identitas-card">
 
-                    <div>
+                            <h3>
+                                <i class="bi bi-geo-alt me-2"></i>
+                                Lokasi Sekolah
+                            </h3>
 
-                        <div class="contact-title">
-                            Informasi Sekolah
-                        </div>
+                            <div class="identitas-item">
+                                <strong>Alamat</strong>
+                                {{ $profil->alamat ?: '-' }}
+                            </div>
 
-                        <div class="contact-text">
-
-                            Nama : SMK YPC Tasikmalaya<br>
-                            Jenjang : SMK<br>
-                            Lokasi : Tasikmalaya, Jawa Barat
+                            <div class="identitas-item">
+                                <strong>Kontak</strong>
+                                {{ $profil->kontak ?: '-' }}
+                            </div>
 
                         </div>
 
@@ -529,16 +467,75 @@
 
                 </div>
 
+                <div class="profil-section">
+
+                    <h2>
+                        Visi & Misi
+                    </h2>
+
+                    <div class="visi-text">
+                        {!! nl2br(e($profil->visi_misi ?: 'Belum ada visi dan misi.')) !!}
+                    </div>
+
+                </div>
+
+                <div class="profil-section">
+
+                    <h2>
+                        Alamat & Kontak
+                    </h2>
+
+                    <div class="contact-wrapper">
+
+                        <div>
+                            <div class="contact-title">
+                                Alamat Sekolah
+                            </div>
+
+                            <div class="contact-text">
+                                {!! nl2br(e($profil->alamat ?: '-')) !!}
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="contact-title">
+                                Informasi Sekolah
+                            </div>
+
+                            <div class="contact-text">
+                                Nama : {{ $profil->nama_sekolah }}<br>
+                                Kepala Sekolah : {{ $profil->kepala_sekolah ?: '-' }}<br>
+                                Kontak : {{ $profil->kontak ?: '-' }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="profil-footer">
+                    © 2026 {{ $profil->nama_sekolah }}
+                </div>
+
             </div>
 
+    @else
 
-            <div class="profil-footer">
+    <div class="empty-profil">
 
-                © 2026 SMK YPC Tasikmalaya
+        <i class="bi bi-building"></i>
 
-            </div>
+        <h3>
+            Profil Sekolah Belum Ada
+        </h3>
 
-        </div>
+        <p>
+            Data profil sekolah belum tersedia.
+        </p>
+
+    </div>
+
+@endif
 
     </div>
 

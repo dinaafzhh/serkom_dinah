@@ -34,19 +34,26 @@ class BeritaController extends Controller
             ->where('status', 'Publish')
             ->firstOrFail();
 
-        $beritaLainnya = Berita::where('status', 'Publish')
+        $beritaLain = Berita::with('user')
+            ->where('status', 'Publish')
             ->where('id_berita', '!=', $id)
             ->orderBy('tanggal', 'desc')
             ->get();
 
-        return view('admin.berita.detail', compact('berita', 'beritaLainnya'));
+        return view(
+            'admin.berita.detail',
+            compact('berita', 'beritaLain')
+        );
     }
 
     public function create()
     {
         $users = User::all();
 
-        return view('admin.berita.create', compact('users'));
+        return view(
+            'admin.berita.create',
+            compact('users')
+        );
     }
 
     public function store(Request $request)
@@ -78,15 +85,6 @@ class BeritaController extends Controller
         return redirect()
             ->route('admin.berita.berita')
             ->with('success', 'Berita berhasil ditambahkan!');
-    }
-
-    public function show(string $id)
-    {
-        $berita = Berita::with('user')
-            ->where('id_berita', $id)
-            ->firstOrFail();
-
-        return view('admin.berita.show', compact('berita'));
     }
 
     public function edit(string $id)
@@ -123,6 +121,7 @@ class BeritaController extends Controller
         $berita->id_user = $request->id_user;
 
         if ($request->hasFile('gambar')) {
+
             if ($berita->gambar) {
                 Storage::disk('public')->delete($berita->gambar);
             }

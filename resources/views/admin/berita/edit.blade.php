@@ -2,6 +2,18 @@
 
 @section('content')
 
+<style>
+
+.form-label {
+    margin-bottom: 8px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+</style>
+
 <div class="container-fluid py-4">
 
     <div class="mb-4">
@@ -15,15 +27,25 @@
     </div>
 
     @if ($errors->any())
+
         <div class="alert alert-danger">
-            <strong>Data belum berhasil disimpan.</strong>
+
+            <strong>
+                Data belum berhasil disimpan.
+            </strong>
 
             <ul class="mb-0 mt-2">
+
                 @foreach ($errors->all() as $error)
+
                     <li>{{ $error }}</li>
+
                 @endforeach
+
             </ul>
+
         </div>
+
     @endif
 
     <div class="card border-0 shadow-sm">
@@ -38,6 +60,7 @@
 
                 @csrf
                 @method('PUT')
+
 
                 <div class="mb-3">
 
@@ -59,12 +82,15 @@
                     >
 
                     @error('judul')
+
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
                     @enderror
 
                 </div>
+
 
                 <div class="mb-3">
 
@@ -84,12 +110,15 @@
                     >{{ old('isi', $berita->isi) }}</textarea>
 
                     @error('isi')
+
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
                     @enderror
 
                 </div>
+
 
                 <div class="mb-3">
 
@@ -110,13 +139,14 @@
                     >
 
                     @error('tanggal')
+
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
                     @enderror
 
                 </div>
-
 
 
                 <div class="mb-3">
@@ -125,7 +155,7 @@
                         Gambar Saat Ini
                     </label>
 
-                    @if($berita->gambar)
+                    @if ($berita->gambar)
 
                         <div class="mb-3">
 
@@ -170,12 +200,15 @@
                     </small>
 
                     @error('gambar')
+
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
                     @enderror
 
                 </div>
+
 
                 <div class="mb-3">
 
@@ -210,12 +243,15 @@
                     </select>
 
                     @error('status')
+
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
                     @enderror
 
                 </div>
+
 
                 <div class="mb-4">
 
@@ -233,7 +269,7 @@
                         required
                     >
 
-                        @foreach($users as $user)
+                        @foreach ($users as $user)
 
                             <option
                                 value="{{ $user->id_user }}"
@@ -247,12 +283,15 @@
                     </select>
 
                     @error('id_user')
+
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
                     @enderror
 
                 </div>
+
 
                 <div class="d-flex gap-2">
 
@@ -263,7 +302,6 @@
                         <i class="bi bi-save me-1"></i>
                         Simpan Perubahan
                     </button>
-
 
                     <a
                         href="{{ route('admin.berita.berita') }}"

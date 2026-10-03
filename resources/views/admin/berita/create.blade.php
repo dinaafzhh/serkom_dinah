@@ -2,176 +2,267 @@
 
 @section('content')
 
+<style>
+
+.form-label {
+    margin-bottom: 8px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+</style>
+
 <div class="container-fluid py-4">
 
     <div class="mb-4">
-        <h4 class="fw-bold mb-1">Tambah Berita</h4>
-        <p class="text-muted mb-0">Tambahkan berita baru sekolah</p>
+        <h4 class="fw-bold mb-1">
+            Tambah Berita
+        </h4>
+
+        <p class="text-muted mb-0">
+            Tambahkan berita baru sekolah
+        </p>
     </div>
 
     @if ($errors->any())
+
         <div class="alert alert-danger">
+
             <ul class="mb-0">
+
                 @foreach ($errors->all() as $error)
+
                     <li>{{ $error }}</li>
+
                 @endforeach
+
             </ul>
+
         </div>
+
     @endif
 
     <div class="card border-0 shadow-sm">
+
         <div class="card-body p-4">
 
-            <form action="{{ route('admin.berita.store') }}"
-                  method="POST"
-                  enctype="multipart/form-data"
-                  id="formBerita">
+            <form
+                action="{{ route('admin.berita.store') }}"
+                method="POST"
+                enctype="multipart/form-data"
+                id="formBerita"
+            >
 
                 @csrf
 
                 <div class="mb-3">
+
                     <label class="form-label fw-semibold">
                         Judul Berita
                     </label>
 
-                    <input type="text"
-                           name="judul"
-                           class="form-control"
-                           value="{{ old('judul') }}"
-                           maxlength="50"
-                           required>
+                    <input
+                        type="text"
+                        name="judul"
+                        class="form-control"
+                        value="{{ old('judul') }}"
+                        maxlength="50"
+                        required
+                    >
 
                     @error('judul')
-                        <small class="text-danger">{{ $message }}</small>
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
                     @enderror
+
                 </div>
 
+
                 <div class="mb-3">
+
                     <label class="form-label fw-semibold">
                         Isi Berita
                     </label>
 
-                    <textarea name="isi"
-                              rows="6"
-                              class="form-control"
-                              required>{{ old('isi') }}</textarea>
+                    <textarea
+                        name="isi"
+                        rows="6"
+                        class="form-control"
+                        required
+                    >{{ old('isi') }}</textarea>
 
                     @error('isi')
-                        <small class="text-danger">{{ $message }}</small>
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
                     @enderror
+
                 </div>
 
+
                 <div class="mb-3">
+
                     <label class="form-label fw-semibold">
                         Tanggal
                     </label>
 
-                    <input type="date"
-                           name="tanggal"
-                           class="form-control"
-                           value="{{ old('tanggal') }}"
-                           required>
+                    <input
+                        type="date"
+                        name="tanggal"
+                        class="form-control"
+                        value="{{ old('tanggal') }}"
+                        required
+                    >
 
                     @error('tanggal')
-                        <small class="text-danger">{{ $message }}</small>
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
                     @enderror
+
                 </div>
 
+
                 <div class="mb-3">
+
                     <label class="form-label fw-semibold">
                         Gambar Berita
                     </label>
 
-                    <input type="file"
-                           name="gambar"
-                           class="form-control"
-                           accept="image/*">
+                    <input
+                        type="file"
+                        name="gambar"
+                        class="form-control"
+                        accept="image/*"
+                    >
 
                     <small class="text-muted">
                         Format JPG, JPEG, PNG, atau WEBP. Maksimal 2 MB.
                     </small>
 
                     @error('gambar')
+
                         <small class="text-danger d-block">
                             {{ $message }}
                         </small>
+
                     @enderror
+
                 </div>
 
+
                 <div class="mb-3">
+
                     <label class="form-label fw-semibold">
                         Status
                     </label>
 
-                    <select name="status"
-                            class="form-select"
-                            required>
+                    <select
+                        name="status"
+                        class="form-select"
+                        required
+                    >
 
-                        <option value="">-- Pilih Status --</option>
+                        <option value="">
+                            -- Pilih Status --
+                        </option>
 
-                        <option value="Publish"
-                            {{ old('status') == 'Publish' ? 'selected' : '' }}>
+                        <option
+                            value="Publish"
+                            {{ old('status') == 'Publish' ? 'selected' : '' }}
+                        >
                             Publish
                         </option>
 
-                        <option value="Draft"
-                            {{ old('status') == 'Draft' ? 'selected' : '' }}>
+                        <option
+                            value="Draft"
+                            {{ old('status') == 'Draft' ? 'selected' : '' }}
+                        >
                             Draft
                         </option>
 
                     </select>
 
                     @error('status')
-                        <small class="text-danger">{{ $message }}</small>
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
                     @enderror
+
                 </div>
 
+
                 <div class="mb-4">
-                    <label for="penulis" class="form-label fw-semibold">
+
+                    <label
+                        for="penulis"
+                        class="form-label fw-semibold"
+                    >
                         Penulis
                     </label>
 
-                    <input type="text"
-                           id="penulis"
-                           class="form-control"
-                           list="daftarPenulis"
-                           placeholder="Ketik username penulis..."
-                           autocomplete="off"
-                           value="{{ old('penulis') }}">
+                    <input
+                        type="text"
+                        id="penulis"
+                        class="form-control"
+                        list="daftarPenulis"
+                        placeholder="Ketik username penulis..."
+                        autocomplete="off"
+                        value="{{ old('penulis') }}"
+                    >
 
                     <datalist id="daftarPenulis">
 
-                        @foreach($users as $user)
-                            <option value="{{ $user->username }}">
+                        @foreach ($users as $user)
+
+                            <option value="{{ $user->username }}"></option>
+
                         @endforeach
 
                     </datalist>
 
-                    <input type="hidden"
-                           name="id_user"
-                           id="id_user"
-                           value="{{ old('id_user') }}">
+                    <input
+                        type="hidden"
+                        name="id_user"
+                        id="id_user"
+                        value="{{ old('id_user') }}"
+                    >
 
-                    <small id="statusPenulis" class="text-muted">
+                    <small
+                        id="statusPenulis"
+                        class="text-muted"
+                    >
                         Ketik lalu pilih username penulis.
                     </small>
 
                     @error('id_user')
+
                         <small class="text-danger d-block">
                             {{ $message }}
                         </small>
+
                     @enderror
+
                 </div>
+
 
                 <div class="d-flex gap-2">
 
-                    <button type="submit" class="btn btn-primary">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
                         <i class="bi bi-save me-1"></i>
                         Simpan
                     </button>
 
-                    <a href="{{ route('admin.berita.berita') }}"
-                       class="btn btn-secondary">
+                    <a
+                        href="{{ route('admin.berita.berita') }}"
+                        class="btn btn-secondary"
+                    >
                         Kembali
                     </a>
 
@@ -180,6 +271,7 @@
             </form>
 
         </div>
+
     </div>
 
 </div>
@@ -253,4 +345,3 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 @endsection
-

@@ -10,8 +10,6 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         $query = Siswa::query();
-
-        // Filter jenis kelamin
         if ($request->jenis_kelamin) {
             $query->where(
                 'jenis_kelamin',
@@ -96,6 +94,6 @@ class SiswaController extends Controller
 
         return redirect()
             ->route('admin.siswa.siswa')
-            ->with('success', 'Data siswa berhasil dihapus.');
+            ->with('success', 'Data siswa berhasil di hapus.');
     }
 }

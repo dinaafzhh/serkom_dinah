@@ -3,65 +3,116 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profil;
-use App\Http\Requests\StoreprofilRequest;
-use App\Http\Requests\UpdateprofilRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.profil.profil');
+        $profil = Profil::first();
+
+        return view('admin.profil.profil', compact('profil'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.profil.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreprofilRequest $request)
+    public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nama_sekolah' => 'required|string|max:255',
+            'kepala_sekolah' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'npsn' => 'nullable|string|max:50',
+            'alamat' => 'nullable|string',
+            'kontak' => 'nullable|string|max:100',
+            'visi_misi' => 'nullable|string',
+            'tahun_berdiri' => 'nullable|integer',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('profil', 'public');
+        }
+
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store('profil', 'public');
+        }
+
+        Profil::create($data);
+
+        return redirect()
+            ->route('admin.profil.profil')
+            ->with('success', 'Profil sekolah berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Profil $profil)
+    public function edit($id)
     {
-        //
+        $profil = Profil::findOrFail($id);
+
+        return view('admin.profil.edit', compact('profil'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Profil $profil)
+    public function update(Request $request, $id)
     {
-        //
+        $profil = Profil::findOrFail($id);
+
+        $data = $request->validate([
+            'nama_sekolah' => 'required|string|max:255',
+            'kepala_sekolah' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'npsn' => 'nullable|string|max:50',
+            'alamat' => 'nullable|string',
+            'kontak' => 'nullable|string|max:100',
+            'visi_misi' => 'nullable|string',
+            'tahun_berdiri' => 'nullable|integer',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('foto')) {
+            if ($profil->foto && Storage::disk('public')->exists($profil->foto)) {
+                Storage::disk('public')->delete($profil->foto);
+            }
+
+            $data['foto'] = $request->file('foto')->store('profil', 'public');
+        }
+
+        if ($request->hasFile('logo')) {
+            if ($profil->logo && Storage::disk('public')->exists($profil->logo)) {
+                Storage::disk('public')->delete($profil->logo);
+            }
+
+            $data['logo'] = $request->file('logo')->store('profil', 'public');
+        }
+
+        $profil->update($data);
+
+        return redirect()
+            ->route('admin.profil.profil')
+            ->with('success', 'Profil sekolah berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateprofilRequest $request, Profil $profil)
+    public function destroy($id)
     {
-        //
-    }
+        $profil = Profil::findOrFail($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Profil $profil)
-    {
-        //
+        if ($profil->foto && Storage::disk('public')->exists($profil->foto)) {
+            Storage::disk('public')->delete($profil->foto);
+        }
+
+        if ($profil->logo && Storage::disk('public')->exists($profil->logo)) {
+            Storage::disk('public')->delete($profil->logo);
+        }
+
+        $profil->delete();
+
+        return redirect()
+            ->route('admin.profil.profil')
+            ->with('success', 'Profil sekolah berhasil dihapus.');
     }
 }
-

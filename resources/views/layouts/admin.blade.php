@@ -11,11 +11,11 @@
     <meta name="author" content="SMK YPC Tasikmalaya">
 
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/libs/apexcharts/apexcharts.css') }}">
-    <link rel="stylesheet"---  href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     <style>
         .sidebar-brand img {
@@ -23,6 +23,15 @@
             height: 50px;
             object-fit: contain;
             margin-right: 8px;
+        }
+
+        .sidebar-menu-link.active {
+            color: #ffffff !important;
+            background-color: #4b5563 !important;
+        }
+
+        .sidebar-menu-link.active i {
+            color: #ffffff !important;
         }
     </style>
 </head>
@@ -54,14 +63,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.dashboard') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
 
                             <i class="bi bi-speedometer2"></i>
 
-                            <span>
-                                Dashboard
-                            </span>
+                            <span>Dashboard</span>
 
                         </a>
 
@@ -70,6 +76,7 @@
                 </ul>
 
             </div>
+
 
             <div class="sidebar-menu-section">
 
@@ -82,14 +89,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.profil.profil') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.profil.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.profil.*') ? 'active' : '' }}">
 
                             <i class="bi bi-building-fill"></i>
 
-                            <span>
-                                Profil Sekolah
-                            </span>
+                            <span>Profil Sekolah</span>
 
                         </a>
 
@@ -98,6 +102,7 @@
                 </ul>
 
             </div>
+
 
             <div class="sidebar-menu-section">
 
@@ -110,14 +115,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.guru.guru') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.guru.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.guru.*') ? 'active' : '' }}">
 
                             <i class="bi bi-person-workspace"></i>
 
-                            <span>
-                                Guru
-                            </span>
+                            <span>Guru</span>
 
                         </a>
 
@@ -126,14 +128,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.siswa.siswa') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.siswa.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.siswa.*') ? 'active' : '' }}">
 
                             <i class="bi bi-people-fill"></i>
 
-                            <span>
-                                Siswa
-                            </span>
+                            <span>Siswa</span>
 
                         </a>
 
@@ -142,6 +141,7 @@
                 </ul>
 
             </div>
+
 
             <div class="sidebar-menu-section">
 
@@ -154,14 +154,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.ektrakurikuler.ektrakurikuler') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.ektrakurikuler.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.ektrakurikuler.*') ? 'active' : '' }}">
 
                             <i class="bi bi-trophy-fill"></i>
 
-                            <span>
-                                Ekstrakurikuler
-                            </span>
+                            <span>Ekstrakurikuler</span>
 
                         </a>
 
@@ -170,6 +167,7 @@
                 </ul>
 
             </div>
+
 
             <div class="sidebar-menu-section">
 
@@ -182,14 +180,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.berita.berita') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
 
                             <i class="bi bi-newspaper"></i>
 
-                            <span>
-                                Berita
-                            </span>
+                            <span>Berita</span>
 
                         </a>
 
@@ -198,14 +193,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.galeri.galeri') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.galeri.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.galeri.*') ? 'active' : '' }}">
 
                             <i class="bi bi-images"></i>
 
-                            <span>
-                                Galeri
-                            </span>
+                            <span>Galeri</span>
 
                         </a>
 
@@ -214,14 +206,11 @@
                     <li class="sidebar-menu-item">
 
                         <a href="{{ route('admin.user.user') }}"
-                           class="sidebar-menu-link
-                           {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
+                           class="sidebar-menu-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
 
                             <i class="bi bi-people"></i>
 
-                            <span>
-                                Kelola User
-                            </span>
+                            <span>Kelola User</span>
 
                         </a>
 
@@ -235,20 +224,17 @@
 
     </div>
 
-    <div class="main-wrapper">
 
+    <div class="main-wrapper">
 
         <header class="navbar-custom bg-white">
 
-            <!-- NAVBAR LEFT -->
             <div class="navbar-left">
 
-                <!-- Mobile Sidebar -->
                 <button
                     class="sidebar-toggle-btn me-3"
                     id="sidebar-toggle"
-                    type="button"
-                >
+                    type="button">
 
                     <i class="bi bi-list"></i>
 
@@ -257,8 +243,7 @@
                 <button
                     class="btn-desktop-toggle d-none d-xl-flex"
                     id="desktop-sidebar-toggle"
-                    type="button"
-                >
+                    type="button">
 
                     <i class="bi bi-chevron-bar-left"></i>
 
@@ -266,25 +251,25 @@
 
             </div>
 
+
             <div class="navbar-search-wrapper">
 
                 <input
                     type="text"
                     class="navbar-search-input"
                     placeholder="Search..."
-                    id="main-search"
-                >
+                    id="main-search">
 
                 <button
                     class="navbar-search-btn"
-                    type="button"
-                >
+                    type="button">
 
                     <i class="bi bi-search"></i>
 
                 </button>
 
             </div>
+
 
             <div class="navbar-actions">
 
@@ -295,13 +280,10 @@
                         type="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
-                        id="profile-dropdown"
-                    >
+                        id="profile-dropdown">
 
                         <span class="navbar-profile-icon">
-
                             <i class="bi bi-person-fill"></i>
-
                         </span>
 
                         <span class="navbar-profile-name d-none d-md-inline">
@@ -310,22 +292,18 @@
 
                     </button>
 
+
                     <ul
                         class="dropdown-menu dropdown-menu-end"
-                        aria-labelledby="profile-dropdown"
-                    >
+                        aria-labelledby="profile-dropdown">
 
                         <li class="dropdown-header">
 
-                            <strong>
-                                Administrator
-                            </strong>
+                            <strong>Administrator</strong>
 
                             <br>
 
-                            <small>
-                                Admin Sekolah
-                            </small>
+                            <small>Admin Sekolah</small>
 
                         </li>
 
@@ -334,8 +312,7 @@
 
                             <a
                                 class="dropdown-item"
-                                href="{{ route('admin.profil.profil') }}"
-                            >
+                                href="{{ route('admin.profil.profil') }}">
 
                                 <i class="bi bi-building me-2"></i>
 
@@ -345,12 +322,12 @@
 
                         </li>
 
+
                         <li>
 
                             <a
                                 class="dropdown-item"
-                                href="{{ route('admin.user.user') }}"
-                            >
+                                href="{{ route('admin.user.user') }}">
 
                                 <i class="bi bi-people me-2"></i>
 
@@ -359,6 +336,7 @@
                             </a>
 
                         </li>
+
 
                         <li>
                             <hr class="dropdown-divider">
@@ -369,15 +347,13 @@
 
                             <form
                                 action="{{ route('logout') }}"
-                                method="POST"
-                            >
+                                method="POST">
 
                                 @csrf
 
                                 <button
                                     type="submit"
-                                    class="dropdown-item text-danger"
-                                >
+                                    class="dropdown-item text-danger">
 
                                     <i class="bi bi-box-arrow-right me-2"></i>
 
@@ -404,6 +380,7 @@
 
         </main>
 
+
         <footer class="footer-custom bg-white">
 
             <div class="footer-left">
@@ -412,9 +389,7 @@
 
                     Copyright &copy; 2026
 
-                    <strong>
-                        SMK YPC
-                    </strong>.
+                    <strong>SMK YPC</strong>.
 
                     All rights reserved.
 
@@ -426,16 +401,20 @@
 
     </div>
 
+
     <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+
+
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
 
             const searchInput =
                 document.getElementById('main-search');
-
 
             if (searchInput) {
 
@@ -444,16 +423,13 @@
                     const keyword =
                         this.value.toLowerCase().trim();
 
-
                     const tableRows =
                         document.querySelectorAll('table tbody tr');
-
 
                     tableRows.forEach(function (row) {
 
                         const rowText =
                             row.textContent.toLowerCase();
-
 
                         if (rowText.includes(keyword)) {
 

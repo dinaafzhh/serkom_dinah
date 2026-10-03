@@ -9,17 +9,24 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LandingController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/', [BeritaController::class, 'landing'])->name('landing');
-Route::get('/berita/{id}', [BeritaController::class, 'detail'])->name('berita.detail');
+Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
 Route::get('/profil', [ProfilController::class, 'index'])->name('admin.profil.profil');
+Route::get('/profil/create', [ProfilController::class, 'create'])->name('admin.profil.create');
+Route::post('/profil', [ProfilController::class, 'store'])->name('admin.profil.store');
+Route::get('/profil/{profil}/edit', [ProfilController::class, 'edit'])->name('admin.profil.edit');
+Route::put('/profil/{profil}', [ProfilController::class, 'update'])->name('admin.profil.update');
+Route::delete('/profil/{profil}', [ProfilController::class, 'destroy'])->name('admin.profil.destroy');
 
 Route::get('/user', [UserController::class, 'index'])->name('admin.user.user');
 Route::get('/user/create', [UserController::class, 'create'])->name('admin.user.create');
@@ -56,9 +63,13 @@ Route::get('/berita/edit/{id}', [BeritaController::class, 'edit'])->name('admin.
 Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('admin.berita.update');
 Route::delete('/berita/delete/{id}', [BeritaController::class, 'destroy'])->name('admin.berita.destroy');
 
+Route::get('/berita/{id}', [BeritaController::class, 'detail'])
+    ->whereNumber('id')
+    ->name('berita.detail');
+
 Route::get('/galeri', [GaleriController::class, 'index'])->name('admin.galeri.galeri');
 Route::get('/galeri/create', [GaleriController::class, 'create'])->name('admin.galeri.create');
 Route::post('/galeri/store', [GaleriController::class, 'store'])->name('admin.galeri.store');
 Route::get('/galeri/edit/{id}', [GaleriController::class, 'edit'])->name('admin.galeri.edit');
 Route::put('/galeri/update/{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
-Route::delete('/galeri/delete/{id}', [GaleriController::class, 'destroy'])->name('admin.galeri.destroy');
+Route::delete('/galeri/delete/{id}', [GaleriController::class, 'destroy'])->name('admin.galeri.destroy'); 
