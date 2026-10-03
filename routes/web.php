@@ -72,4 +72,4 @@ Route::get('/galeri/create', [GaleriController::class, 'create'])->name('admin.g
 Route::post('/galeri/store', [GaleriController::class, 'store'])->name('admin.galeri.store');
 Route::get('/galeri/edit/{id}', [GaleriController::class, 'edit'])->name('admin.galeri.edit');
 Route::put('/galeri/update/{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
-Route::delete('/galeri/delete/{id}', [GaleriController::class, 'destroy'])->name('admin.galeri.destroy'); 
+Route::delete('/galeri/delete/{id}', [GaleriController::class, 'destroy'])->name('admin.galeri.destroy');

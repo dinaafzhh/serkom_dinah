@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SMK YPC Tasikmalaya</title>
+    <title>
+        {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
+    </title>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +31,7 @@
         body {
             font-family: Arial, sans-serif;
             background: #ffffff;
-            color: #333;
+            color: #222;
         }
 
         .top-header {
@@ -39,18 +47,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 30px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .brand img {
-            width: 58px;
-            height: 58px;
-            object-fit: contain;
         }
 
         .brand h1 {
@@ -99,21 +95,6 @@
             color: #374151;
         }
 
-        .login-btn {
-            text-decoration: none;
-            background: linear-gradient(135deg, #374151, #6b7280);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: .3s;
-        }
-
-        .login-btn:hover {
-            background: linear-gradient(135deg, #1f2937, #4b5563);
-        }
-
         .navbar {
             background: linear-gradient(90deg, #1f2937, #6b7280, #d1d5db);
         }
@@ -125,7 +106,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 35px;
+            overflow-x: auto;
+            padding: 0 15px;
         }
 
         .nav-inner a {
@@ -312,185 +295,370 @@
             color: #6b7280;
         }
 
-        .profile-box {
-            background: linear-gradient(135deg, #ffffff, #f3f4f6);
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, .07);
-            border: 1px solid #e5e7eb;
-        }
-
-        .profile-box h3 {
-            color: #374151;
-            margin-bottom: 15px;
-        }
-
-        .profile-box p {
-            line-height: 1.8;
-            color: #4b5563;
-        }
-
-        .sambutan-box {
-            max-width: 1260px;
+        .sambutan-section {
+            max-width: 1200px;
             margin: 70px auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
+            padding: 0 25px;
         }
 
-        .sambutan-foto {
+        .sambutan-container {
+            max-width: 1140px;
+            margin: auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 35px;
+            padding: 0;
+        }
+
+        .sambutan-photo {
             width: 270px;
             min-width: 270px;
         }
 
-        .sambutan-foto img {
+        .sambutan-photo img {
             width: 100%;
             height: 335px;
             object-fit: cover;
-            border-radius: 12px;
             display: block;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
         }
 
-        .sambutan-text {
+        .sambutan-photo-empty {
+            width: 100%;
+            height: 335px;
+            border-radius: 10px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 70px;
+        }
+
+        .sambutan-content {
             flex: 1;
-            padding: 5px 0;
+            padding-top: 4px;
         }
 
         .sambutan-label {
             color: #6b7280;
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: 1.5px;
-            margin-bottom: 5px;
+            margin-bottom: 7px;
+            font-weight: bold;
         }
 
-        .sambutan-text h2 {
+        .sambutan-content h2 {
+            margin: 0;
             color: #374151;
             font-size: 32px;
-            margin: 0 0 20px;
+            font-weight: 700;
         }
 
-        .sambutan-text p {
-            color: #1f2937;
-            font-size: 15px;
+        .sambutan-line {
+            width: 295px;
+            height: 4px;
+            margin: 12px 0 20px;
+            background: linear-gradient(
+                to right,
+                #374151,
+                #d1d5db
+            );
+        }
+
+        .sambutan-content p {
+            margin: 0 0 12px;
+            color: #4b5563;
+            font-size: 16px;
             line-height: 1.7;
-            margin-bottom: 13px;
         }
 
-        .kepala-nama {
-            margin-top: 20px;
-            padding: 0;
-            border: none;
-            border-top: none;
-            box-shadow: none;
+        .sambutan-identitas {
+            border-top: 1px solid #eeeeee;
+            margin-top: 28px;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
         }
 
-        .kepala-nama strong {
-            display: block;
+        .sambutan-identitas strong {
+            font-size: 21px;
             color: #374151;
-            font-size: 20px;
-            margin-bottom: 4px;
         }
 
-        .kepala-nama span {
-            display: block;
-            color: #6b7280;
+        .sambutan-identitas span {
             font-size: 15px;
+            color: #6b7280;
+        }
+
+        .visi-misi {
+            margin-top: 25px;
+            padding: 28px;
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .visi-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .visi-title i {
+            font-size: 21px;
+            color: #6b7280;
+        }
+
+        .visi-title h3 {
+            margin: 0;
+            color: #374151;
+            font-size: 22px;
+        }
+
+        .visi-content {
+            color: #4b5563;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .visi-content p {
+            margin-bottom: 12px;
+        }
+
+        #guru {
+            max-width: none;
+            background: #f9fafb;
+            padding: 70px 25px;
+        }
+
+        #guru .section-title,
+        #guru .guru-grid,
+        #guru .empty-guru {
+            max-width: 1150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guru-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .guru-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, .06);
+            transition: .3s;
+        }
+
+        .guru-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .10);
+        }
+
+        .guru-foto {
+            width: 100%;
+            height: 250px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .guru-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .guru-foto i {
+            font-size: 70px;
+            color: #9ca3af;
+        }
+
+        .guru-info {
+            padding: 20px;
+        }
+
+        .guru-info h3 {
+            color: #374151;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .guru-info p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .guru-info span {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        .empty-guru {
+            text-align: center;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .empty-guru i {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .news-card {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, .07);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .news-content {
+            padding: 30px;
+        }
+
+        .news-date {
+            display: inline-block;
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .news-content h3 {
+            color: #374151;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .news-content p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .news-button {
+            display: inline-block;
+            padding: 11px 20px;
+            background: #374151;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .news-button:hover {
+            background: #1f2937;
+        }
+
+        .empty-news {
+            text-align: center;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 35px;
+            color: #6b7280;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-card {
+            position: relative;
+            height: 230px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e5e7eb;
+            border: 1px solid #e5e7eb;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            color: white;
+            background: linear-gradient(
+                transparent,
+                rgba(0, 0, 0, .75)
+            );
+        }
+
+        .gallery-overlay h3 {
+            margin: 20px 0 5px;
+            font-size: 17px;
+        }
+
+        .gallery-overlay span {
+            font-size: 13px;
+            opacity: .9;
+        }
+
+        .empty-gallery {
+            text-align: center;
+            padding: 50px 20px;
+            background: #f5f6f8;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            color: #6b7280;
+        }
+
+        .empty-gallery i {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .empty-gallery p {
+            margin: 0;
         }
 
         .footer {
             background: linear-gradient(135deg, #1f2937, #374151);
             color: white;
             margin-top: 80px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 55px 25px 40px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1.3fr;
-            gap: 50px;
-        }
-
-        .footer-logo {
-            width: 190px;
-            max-height: 85px;
-            object-fit: contain;
-            object-position: left center;
-            margin-bottom: 20px;
-        }
-
-        .footer-description {
-            color: #d1d5db;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .footer h3 {
-            color: white;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .footer-contact {
-            list-style: none;
-        }
-
-        .footer-contact li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-            color: #d1d5db;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .footer-contact i {
-            width: 18px;
-            margin-top: 4px;
-            color: #e5e7eb;
-            flex-shrink: 0;
-        }
-
-        .footer-contact a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: .3s;
-        }
-
-        .footer-contact a:hover {
-            color: white;
-        }
-
-        .footer-news {
-            list-style: none;
-        }
-
-        .footer-news li {
-            margin-bottom: 14px;
-        }
-
-        .footer-news a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 1.6;
-            transition: .3s;
-        }
-
-        .footer-news a:hover {
-            color: white;
-        }
-
-        .footer-comment {
-            margin-top: 30px;
-        }
-
-        .footer-comment p {
-            color: #9ca3af;
-            font-size: 14px;
         }
 
         .footer-bottom {
@@ -501,14 +669,12 @@
             font-size: 13px;
         }
 
-        .footer-bottom strong {
-            color: white;
-        }
+        @media (max-width: 1000px) {
 
-        .footer-credit {
-            margin-top: 7px;
-            color: #9ca3af;
-            font-size: 12px;
+            .guru-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
         }
 
         @media (max-width: 900px) {
@@ -527,9 +693,7 @@
             }
 
             .nav-inner {
-                overflow-x: auto;
                 justify-content: flex-start;
-                padding: 0 20px;
             }
 
             .slider {
@@ -545,33 +709,30 @@
                 font-size: 38px;
             }
 
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 35px;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
+
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
 
-            .sambutan-box {
+            .sambutan-container {
                 flex-direction: column;
-                align-items: stretch;
-                margin: 40px auto;
             }
 
-            .sambutan-foto {
-                width: 230px;
-                min-width: 230px;
+            .sambutan-photo {
+                width: 100%;
+                max-width: 300px;
+                min-width: auto;
                 margin: auto;
             }
 
-            .sambutan-foto img {
-                height: 290px;
+            .sambutan-photo img,
+            .sambutan-photo-empty {
+                height: 360px;
             }
 
-            .sambutan-text h2 {
-                font-size: 27px;
-            }
         }
 
         @media (max-width: 600px) {
@@ -601,11 +762,39 @@
                 height: 38px;
             }
 
-            .footer-container {
-                padding: 40px 20px 30px;
+            .guru-grid {
+                grid-template-columns: 1fr;
             }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-card {
+                height: 230px;
+            }
+
+            .sambutan-section {
+                padding: 0 20px;
+            }
+
+            .sambutan-content h2 {
+                font-size: 27px;
+            }
+
+            .sambutan-label {
+                font-size: 12px;
+                letter-spacing: 1.2px;
+            }
+
+            .sambutan-line {
+                width: 220px;
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
@@ -616,13 +805,13 @@
 
         <div class="brand">
 
-            <img src="{{ asset('assets/images/logo.webp') }}"
-                 alt="Logo SMK YPC">
+            <h1>
+                {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
+            </h1>
 
-            <div>
-                <h1>SMK YPC Tasikmalaya</h1>
-                <p>Sekolah Menengah Kejuruan</p>
-            </div>
+            <p>
+                Sekolah Menengah Kejuruan
+            </p>
 
         </div>
 
@@ -633,8 +822,15 @@
                 <i class="fa-solid fa-phone"></i>
 
                 <div>
-                    <small>Telepon</small>
-                    <strong>0265-546717</strong>
+
+                    <small>
+                        Telepon
+                    </small>
+
+                    <strong>
+                        {{ $profil->kontak ?? '0265-546717' }}
+                    </strong>
+
                 </div>
 
             </div>
@@ -644,19 +840,18 @@
                 <i class="fa-solid fa-envelope"></i>
 
                 <div>
-                    <small>Email</small>
-                    <strong>info@smk-ypc.sch.id</strong>
+
+                    <small>
+                        Email
+                    </small>
+
+                    <strong>
+                        info@smk-ypc.sch.id
+                    </strong>
+
                 </div>
 
             </div>
-
-            <a href="{{ url('/login') }}" class="login-btn">
-
-                <i class="fa-solid fa-right-to-bracket"></i>
-
-                Login
-
-            </a>
 
         </div>
 
@@ -668,32 +863,33 @@
 
     <div class="nav-inner">
 
-        <a href="/">
+        <a href="{{ url('/') }}">
             <i class="fa-solid fa-house"></i>
             Beranda
         </a>
 
-        <a href="#profil">
+        <a href="{{ url('/profil-sekolah') }}">
+            <i class="fa-solid fa-school"></i>
             Profil Sekolah
         </a>
 
-        <a href="#program">
-            Program Keahlian
+        <a href="{{ url('/guru') }}">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            Guru
         </a>
 
-        <a href="#guru">
-            Guru & Staf
-        </a>
-
-        <a href="#ekskul">
+        <a href="{{ url('/ektrakurikuler') }}">
+            <i class="fa-solid fa-trophy"></i>
             Ekstrakurikuler
         </a>
 
-        <a href="#berita">
+        <a href="{{ url('/berita') }}">
+            <i class="fa-solid fa-newspaper"></i>
             Berita
         </a>
 
-        <a href="#galeri">
+        <a href="{{ url('/galeri') }}">
+            <i class="fa-solid fa-images"></i>
             Galeri
         </a>
 
@@ -701,7 +897,7 @@
 
 </nav>
 
-<section class="slider" id="slider">
+<section class="slider" id="beranda">
 
     <div class="slides" id="slides">
 
@@ -709,9 +905,13 @@
 
             <div class="hero-content">
 
-                <span>SMK YPC TASIKMALAYA</span>
+                <span>
+                    {{ $profil->nama_sekolah ?? 'SMK YPC TASIKMALAYA' }}
+                </span>
 
-                <h2>Membangun Generasi Unggul</h2>
+                <h2>
+                    Membangun Generasi Unggul
+                </h2>
 
                 <p>
                     Mewujudkan peserta didik yang kompeten,
@@ -719,12 +919,12 @@
                     dunia kerja serta perkembangan teknologi.
                 </p>
 
-                <a href="#profil" class="hero-button">
-
-                    Selengkapnya
-
+                <a
+                    href="{{ url('/profil-sekolah') }}"
+                    class="hero-button"
+                >
+                    Profil Sekolah
                     <i class="fa-solid fa-arrow-right"></i>
-
                 </a>
 
             </div>
@@ -735,9 +935,13 @@
 
             <div class="hero-content">
 
-                <span>PENDIDIKAN BERKUALITAS</span>
+                <span>
+                    PENDIDIKAN BERKUALITAS
+                </span>
 
-                <h2>Belajar dan Berkarya</h2>
+                <h2>
+                    Belajar dan Berkarya
+                </h2>
 
                 <p>
                     Mengembangkan keterampilan dan potensi
@@ -745,12 +949,12 @@
                     dan inovatif.
                 </p>
 
-                <a href="#profil" class="hero-button">
-
-                    Lihat Profil
-
+                <a
+                    href="{{ url('/guru') }}"
+                    class="hero-button"
+                >
+                    Lihat Guru
                     <i class="fa-solid fa-arrow-right"></i>
-
                 </a>
 
             </div>
@@ -761,9 +965,13 @@
 
             <div class="hero-content">
 
-                <span>SMK YPC TASIKMALAYA</span>
+                <span>
+                    {{ $profil->nama_sekolah ?? 'SMK YPC TASIKMALAYA' }}
+                </span>
 
-                <h2>Siap Menghadapi Masa Depan</h2>
+                <h2>
+                    Siap Menghadapi Masa Depan
+                </h2>
 
                 <p>
                     Mempersiapkan generasi muda dengan
@@ -771,12 +979,12 @@
                     dunia kerja dan industri.
                 </p>
 
-                <a href="#sambutan" class="hero-button">
-
-                    Selengkapnya
-
+                <a
+                    href="{{ url('/berita') }}"
+                    class="hero-button"
+                >
+                    Lihat Berita
                     <i class="fa-solid fa-arrow-right"></i>
-
                 </a>
 
             </div>
@@ -785,136 +993,412 @@
 
     </div>
 
-    <button class="arrow prev" onclick="prevSlide()">
-
+    <button
+        class="arrow prev"
+        onclick="prevSlide()"
+    >
         <i class="fa-solid fa-chevron-left"></i>
-
     </button>
 
-    <button class="arrow next" onclick="nextSlide()">
-
+    <button
+        class="arrow next"
+        onclick="nextSlide()"
+    >
         <i class="fa-solid fa-chevron-right"></i>
-
     </button>
 
     <div class="dots">
 
-        <button class="dot active"
-                onclick="goToSlide(0)">
-        </button>
+        <button
+            class="dot active"
+            onclick="goToSlide(0)"
+        ></button>
 
-        <button class="dot"
-                onclick="goToSlide(1)">
-        </button>
+        <button
+            class="dot"
+            onclick="goToSlide(1)"
+        ></button>
 
-        <button class="dot"
-                onclick="goToSlide(2)">
-        </button>
+        <button
+            class="dot"
+            onclick="goToSlide(2)"
+        ></button>
 
     </div>
 
 </section>
 
-<section class="section" id="profil">
+<section class="sambutan-section" id="profil">
+
+    @if ($profil)
+
+        <div class="sambutan-container">
+
+            <div class="sambutan-photo">
+
+                @if ($profil->foto)
+
+                    <img
+                        src="{{ asset('storage/' . $profil->foto) }}"
+                        alt="Foto Kepala Sekolah"
+                    >
+
+                @else
+
+                    <div class="sambutan-photo-empty">
+
+                        <i class="fa-solid fa-user-tie"></i>
+
+                    </div>
+
+                @endif
+
+            </div>
+
+            <div class="sambutan-content">
+
+                <div class="sambutan-label">
+                    SAMBUTAN KEPALA SEKOLAH
+                </div>
+
+                <h2>
+                    {{ $profil->kepala_sekolah ?? 'Kepala Sekolah' }}
+                </h2>
+
+                <div class="sambutan-line"></div>
+
+                @if ($profil->deskripsi)
+
+                    <p>
+                        {{ $profil->deskripsi }}
+                    </p>
+
+                @endif
+
+                <p>
+                    Puji syukur ke hadirat Tuhan YME atas segala rahmat dan karunia-Nya.
+                    Selamat datang di website resmi sekolah kami. Website ini kami hadirkan
+                    sebagai sarana informasi dan komunikasi antara sekolah dengan orang tua,
+                    peserta didik, serta masyarakat luas.
+                </p>
+
+                <p>
+                    Melalui media ini, kami berharap seluruh informasi mengenai kegiatan,
+                    prestasi, serta program pendidikan dapat tersampaikan secara transparan,
+                    cepat, dan akurat.
+                </p>
+
+                <div class="sambutan-identitas">
+
+                    <strong>
+                        {{ $profil->kepala_sekolah ?? 'Drs. Ujang Sanusi, M.M' }}
+                    </strong>
+
+                    <span>
+                        Kepala Sekolah
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    @else
+
+        <div class="empty-news">
+
+            <i class="fa-solid fa-school"></i>
+
+            <p>
+                Data profil sekolah belum tersedia.
+            </p>
+
+        </div>
+
+    @endif
+
+</section>
+
+<section class="section" id="visi-misi">
 
     <div class="section-title">
 
-        <h2>Profil Sekolah</h2>
+        <h2>
+            Visi & Misi
+        </h2>
 
         <p>
-            Mengenal Lebih Dekat Tentang SMK YPC Tasikmalaya
+            Arah dan tujuan pendidikan
+            {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
         </p>
 
     </div>
 
-    <div class="profile-box">
+    @if ($profil && $profil->visi_misi)
 
-        <h3>SMK YPC Tasikmalaya</h3>
+        <div class="visi-misi">
 
-        <p>
-            SMK YPC Tasikmalaya merupakan sekolah kejuruan
-            yang berkomitmen memberikan pendidikan dan
-            keterampilan kepada peserta didik agar mampu
-            berkembang dan menghadapi dunia kerja.
-        </p>
+            <div class="visi-title">
 
-    </div>
+                <i class="fa-solid fa-bullseye"></i>
+
+                <h3>
+                    Visi & Misi
+                </h3>
+
+            </div>
+
+            <div class="visi-content">
+
+                {!! nl2br(e($profil->visi_misi)) !!}
+
+            </div>
+
+        </div>
+
+    @else
+
+        <div class="empty-news">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <p>
+                Visi dan misi sekolah belum tersedia.
+            </p>
+
+        </div>
+
+    @endif
 
 </section>
 
-<section class="section" id="sambutan">
+<section id="guru">
 
-    <div class="sambutan-box">
+    <div class="section-title">
 
-        <div class="sambutan-foto">
+        <h2>
+            Guru & Staf
+        </h2>
 
-            <img src="{{ asset('assets/images/Kplsekolah.jpg') }}"
-                 alt="Kepala Sekolah">
-
-        </div>
-
-        <div class="sambutan-text">
-
-            <div class="sambutan-label">
-                KOMITMEN KAMI UNTUK PENDIDIKAN
-            </div>
-
-            <h2>
-                Sambutan Kepala Sekolah
-            </h2>
-
-            <p>
-                Puji syukur ke hadirat Tuhan YME atas segala rahmat
-                dan karunia-Nya. Selamat datang di website resmi
-                sekolah kami. Website ini kami hadirkan sebagai
-                sarana informasi dan komunikasi antara sekolah
-                dengan orang tua, peserta didik, serta masyarakat luas.
-            </p>
-
-            <p>
-                Melalui media ini, kami berharap seluruh informasi
-                mengenai kegiatan, prestasi, serta program pendidikan
-                dapat tersampaikan secara transparan, cepat, dan akurat.
-            </p>
-
-            <div class="kepala-nama">
-
-                <strong>
-                    Drs. Ujang Sanusi, M.M
-                </strong>
-
-                <span>
-                    Kepala Sekolah
-                </span>
-
-            </div>
-
-        </div>
+        <p>
+            Tenaga pendidik
+            {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
+        </p>
 
     </div>
+
+    @if ($guru->count() > 0)
+
+        <div class="guru-grid">
+
+            @foreach ($guru as $item)
+
+                <div class="guru-card">
+
+                    <div class="guru-foto">
+
+                        @if ($item->foto)
+
+                            <img
+                                src="{{ asset('storage/' . $item->foto) }}"
+                                alt="{{ $item->nama_guru }}"
+                            >
+
+                        @else
+
+                            <i class="fa-solid fa-user"></i>
+
+                        @endif
+
+                    </div>
+
+                    <div class="guru-info">
+
+                        <h3>
+                            {{ $item->nama_guru }}
+                        </h3>
+
+                        <p>
+                            {{ $item->mapel ?: 'Guru' }}
+                        </p>
+
+                        <span>
+                            NIP: {{ $item->nip ?: '-' }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
+
+    @else
+
+        <div class="empty-guru">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            <p>
+                Belum ada data guru.
+            </p>
+
+        </div>
+
+    @endif
+
+</section>
+
+<section class="section" id="berita">
+
+    <div class="section-title">
+
+        <h2>
+            Berita Terbaru
+        </h2>
+
+        <p>
+            Informasi dan berita terbaru
+            {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
+        </p>
+
+    </div>
+
+    @if ($berita)
+
+        <div class="news-card">
+
+            @if ($berita->gambar)
+
+                <img
+                    src="{{ asset('storage/' . $berita->gambar) }}"
+                    alt="{{ $berita->judul }}"
+                    class="news-image"
+                >
+
+            @endif
+
+            <div class="news-content">
+
+                <span class="news-date">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
+
+                </span>
+
+                <h3>
+                    {{ $berita->judul }}
+                </h3>
+
+                <p>
+                    {{ \Illuminate\Support\Str::limit(strip_tags($berita->isi), 200) }}
+                </p>
+
+                <a
+                    href="{{ route('berita.detail', $berita->id_berita) }}"
+                    class="news-button"
+                >
+                    Selengkapnya
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    @else
+
+        <div class="empty-news">
+
+            <i class="fa-regular fa-newspaper"></i>
+
+            <p>
+                Belum ada berita yang dipublikasi.
+            </p>
+
+        </div>
+
+    @endif
+
+</section>
+
+<section class="section" id="galeri">
+
+    <div class="section-title">
+
+        <h2>
+            Galeri
+        </h2>
+
+        <p>
+            Dokumentasi kegiatan
+            {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
+        </p>
+
+    </div>
+
+    @if ($galeri->count() > 0)
+
+        <div class="gallery-grid">
+
+            @foreach ($galeri as $item)
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ asset('storage/' . $item->file) }}"
+                        alt="{{ $item->judul }}"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <h3>
+                            {{ $item->judul }}
+                        </h3>
+
+                        @if ($item->kategori)
+
+                            <span>
+                                {{ $item->kategori }}
+                            </span>
+
+                        @endif
+
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
+
+    @else
+
+        <div class="empty-gallery">
+
+            <i class="fa-regular fa-images"></i>
+
+            <p>
+                Belum ada foto galeri.
+            </p>
+
+        </div>
+
+    @endif
 
 </section>
 
 <footer class="footer">
 
-    <div class="footer-container">
-
-        <div class="footer-column">
-
-
-
-        </div>
-
-    <div
-
-
     <div class="footer-bottom">
 
+        © {{ date('Y') }}
 
-                © 2026 SMK YPC Tasikmalaya
-            </strong>
-
-        </div>
+        {{ $profil->nama_sekolah ?? 'SMK YPC Tasikmalaya' }}
 
     </div>
 
@@ -986,15 +1470,20 @@
 
     let startX = 0;
 
-    document.getElementById('slider')
-        .addEventListener('touchstart', function(e) {
+    const slider = document.querySelector('.slider');
+
+    slider.addEventListener(
+        'touchstart',
+        function(e) {
 
             startX = e.touches[0].clientX;
 
-        });
+        }
+    );
 
-    document.getElementById('slider')
-        .addEventListener('touchend', function(e) {
+    slider.addEventListener(
+        'touchend',
+        function(e) {
 
             const endX = e.changedTouches[0].clientX;
 
@@ -1010,9 +1499,11 @@
 
             }
 
-        });
+        }
+    );
 
 </script>
 
 </body>
-</html
+
+</html>

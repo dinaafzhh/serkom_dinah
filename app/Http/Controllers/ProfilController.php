@@ -12,7 +12,7 @@ class ProfilController extends Controller
     {
         $profil = Profil::first();
 
-        return view('admin.profil.profil', compact('profil'));
+        return view('admin.profil.profil')->with('profil', $profil);
     }
 
     public function create()
@@ -26,7 +26,6 @@ class ProfilController extends Controller
             'nama_sekolah' => 'required|string|max:255',
             'kepala_sekolah' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'npsn' => 'nullable|string|max:50',
             'alamat' => 'nullable|string',
             'kontak' => 'nullable|string|max:100',
@@ -37,10 +36,6 @@ class ProfilController extends Controller
 
         if ($request->hasFile('foto')) {
             $data['foto'] = $request->file('foto')->store('profil', 'public');
-        }
-
-        if ($request->hasFile('logo')) {
-            $data['logo'] = $request->file('logo')->store('profil', 'public');
         }
 
         Profil::create($data);
@@ -54,7 +49,7 @@ class ProfilController extends Controller
     {
         $profil = Profil::findOrFail($id);
 
-        return view('admin.profil.edit', compact('profil'));
+        return view('admin.profil.edit')->with('profil', $profil);
     }
 
     public function update(Request $request, $id)
@@ -65,7 +60,6 @@ class ProfilController extends Controller
             'nama_sekolah' => 'required|string|max:255',
             'kepala_sekolah' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'npsn' => 'nullable|string|max:50',
             'alamat' => 'nullable|string',
             'kontak' => 'nullable|string|max:100',
@@ -82,14 +76,6 @@ class ProfilController extends Controller
             $data['foto'] = $request->file('foto')->store('profil', 'public');
         }
 
-        if ($request->hasFile('logo')) {
-            if ($profil->logo && Storage::disk('public')->exists($profil->logo)) {
-                Storage::disk('public')->delete($profil->logo);
-            }
-
-            $data['logo'] = $request->file('logo')->store('profil', 'public');
-        }
-
         $profil->update($data);
 
         return redirect()
@@ -103,10 +89,6 @@ class ProfilController extends Controller
 
         if ($profil->foto && Storage::disk('public')->exists($profil->foto)) {
             Storage::disk('public')->delete($profil->foto);
-        }
-
-        if ($profil->logo && Storage::disk('public')->exists($profil->logo)) {
-            Storage::disk('public')->delete($profil->logo);
         }
 
         $profil->delete();

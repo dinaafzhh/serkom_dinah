@@ -18,7 +18,6 @@ class Profil extends Model
         'nama_sekolah',
         'kepala_sekolah',
         'foto',
-        'logo',
         'npsn',
         'alamat',
         'kontak',

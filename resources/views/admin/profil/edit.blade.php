@@ -3,6 +3,7 @@
 @section('content')
 
 <style>
+
     .profil-form-page {
         background: #f5f6f8;
         min-height: 100vh;
@@ -90,7 +91,7 @@
         padding: 11px 13px;
         font-size: 14px;
         color: #374151;
-        background: white;
+        background: #fff;
         outline: none;
         transition: .2s;
         font-family: inherit;
@@ -103,8 +104,9 @@
     }
 
     .form-group textarea {
-        min-height: 130px;
+        min-height: 150px;
         resize: vertical;
+        line-height: 1.7;
     }
 
     .form-help {
@@ -120,30 +122,43 @@
         margin-top: 5px;
     }
 
-    .current-image {
-        margin-top: 12px;
+    .current-photo {
+        margin-bottom: 20px;
     }
 
-    .current-image img {
-        width: 180px;
-        height: 120px;
+    .current-photo-title {
+        color: #374151;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .current-photo img {
+        width: 270px;
+        height: 335px;
         object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
         display: block;
-        margin-bottom: 8px;
     }
 
-    .current-logo img {
-        width: 140px;
-        height: 100px;
-        object-fit: contain;
-        border-radius: 8px;
-        border: 1px solid #e5e7eb;
+    .no-photo {
+        width: 270px;
+        height: 335px;
+        border-radius: 10px;
+        border: 1px dashed #d1d5db;
         background: #f9fafb;
-        padding: 8px;
-        display: block;
-        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        color: #9ca3af;
+        font-size: 13px;
+    }
+
+    .no-photo i {
+        font-size: 45px;
     }
 
     .form-actions {
@@ -175,6 +190,7 @@
 
     .btn-back:hover {
         background: #e5e7eb;
+        color: #111827;
     }
 
     .btn-save {
@@ -184,10 +200,12 @@
 
     .btn-save:hover {
         background: #1f2937;
+        color: white;
         transform: translateY(-1px);
     }
 
     @media (max-width: 768px) {
+
         .profil-form-page {
             padding: 15px 10px 40px;
         }
@@ -219,7 +237,15 @@
         .btn {
             width: 100%;
         }
+
+        .current-photo img,
+        .no-photo {
+            width: 220px;
+            height: 280px;
+        }
+
     }
+
 </style>
 
 <div class="profil-form-page">
@@ -227,8 +253,15 @@
     <div class="profil-form-container">
 
         <div class="form-header">
-            <h1>Edit Profil Sekolah</h1>
-            <p>Perbarui informasi dan identitas SMK YPC Tasikmalaya.</p>
+
+            <h1>
+                Edit Profil Sekolah
+            </h1>
+
+            <p>
+                Perbarui informasi profil dan sambutan Kepala Sekolah SMK YPC Tasikmalaya.
+            </p>
+
         </div>
 
         <div class="form-card">
@@ -240,103 +273,64 @@
             >
 
                 @csrf
+
                 @method('PUT')
 
                 <div class="form-section">
 
-                    <h2>Informasi Sekolah</h2>
+                    <h2>
+                        Informasi Sekolah
+                    </h2>
 
                     <div class="form-grid">
 
                         <div class="form-group">
-                            <label for="nama_sekolah">Nama Sekolah</label>
+
+                            <label for="nama_sekolah">
+                                Nama Sekolah
+                            </label>
 
                             <input
                                 type="text"
                                 id="nama_sekolah"
                                 name="nama_sekolah"
                                 value="{{ old('nama_sekolah', $profil->nama_sekolah) }}"
+                                placeholder="Masukkan nama sekolah"
                                 required
                             >
 
                             @error('nama_sekolah')
-                                <div class="error-message">{{ $message }}</div>
+
+                                <div class="error-message">
+                                    {{ $message }}
+                                </div>
+
                             @enderror
+
                         </div>
 
                         <div class="form-group">
-                            <label for="kepala_sekolah">Kepala Sekolah</label>
+
+                            <label for="kepala_sekolah">
+                                Kepala Sekolah
+                            </label>
 
                             <input
                                 type="text"
                                 id="kepala_sekolah"
                                 name="kepala_sekolah"
-                                value="{{ old('kepala_sekolah', $profil->kepala_sekolah) }}"
+                                value="{{ old('kepala_sekolah', 'Drs. Ujang Sanusi, M.M') }}"
+                                placeholder="Masukkan nama kepala sekolah"
                             >
 
                             @error('kepala_sekolah')
-                                <div class="error-message">{{ $message }}</div>
+
+                                <div class="error-message">
+                                    {{ $message }}
+                                </div>
+
                             @enderror
-                        </div>
 
-                        <div class="form-group">
-                            <label for="npsn">NPSN</label>
-
-                            <input
-                                type="text"
-                                id="npsn"
-                                name="npsn"
-                                value="{{ old('npsn', $profil->npsn) }}"
-                            >
-
-                            @error('npsn')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tahun_berdiri">Tahun Berdiri</label>
-
-                            <input
-                                type="number"
-                                id="tahun_berdiri"
-                                name="tahun_berdiri"
-                                value="{{ old('tahun_berdiri', $profil->tahun_berdiri) }}"
-                            >
-
-                            @error('tahun_berdiri')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="kontak">Kontak</label>
-
-                            <input
-                                type="text"
-                                id="kontak"
-                                name="kontak"
-                                value="{{ old('kontak', $profil->kontak) }}"
-                            >
-
-                            @error('kontak')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-
-                            <input
-                                type="text"
-                                id="alamat"
-                                name="alamat"
-                                value="{{ old('alamat', $profil->alamat) }}"
-                            >
-
-                            @error('alamat')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
                         </div>
 
                     </div>
@@ -345,35 +339,35 @@
 
                 <div class="form-section">
 
-                    <h2>Visi & Deskripsi</h2>
+                    <h2>
+                        Sambutan Kepala Sekolah
+                    </h2>
 
-                    <div class="form-grid">
+                    <div class="form-group">
 
-                        <div class="form-group full">
-                            <label for="visi_misi">Visi & Misi</label>
+                        <label for="deskripsi">
+                            Isi Sambutan
+                        </label>
 
-                            <textarea
-                                id="visi_misi"
-                                name="visi_misi"
-                            >{{ old('visi_misi', $profil->visi_misi) }}</textarea>
+                        <textarea
+                            id="deskripsi"
+                            name="deskripsi"
+                            placeholder="Masukkan sambutan Kepala Sekolah"
+                        >{{ old('deskripsi', $profil->deskripsi ?: 'Puji syukur ke hadirat Tuhan YME atas segala rahmat dan karunia-Nya. Selamat datang di website resmi sekolah kami. Website ini kami hadirkan sebagai sarana informasi dan komunikasi antara sekolah dengan orang tua, peserta didik, serta masyarakat luas.
 
-                            @error('visi_misi')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
+Melalui media ini, kami berharap seluruh informasi mengenai kegiatan, prestasi, serta program pendidikan dapat tersampaikan secara transparan, cepat, dan akurat.') }}</textarea>
 
-                        <div class="form-group full">
-                            <label for="deskripsi">Deskripsi Sekolah</label>
+                        <span class="form-help">
+                            Isi sambutan yang akan ditampilkan pada bagian Sambutan Kepala Sekolah.
+                        </span>
 
-                            <textarea
-                                id="deskripsi"
-                                name="deskripsi"
-                            >{{ old('deskripsi', $profil->deskripsi) }}</textarea>
+                        @error('deskripsi')
 
-                            @error('deskripsi')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
+
+                        @enderror
 
                     </div>
 
@@ -381,75 +375,101 @@
 
                 <div class="form-section">
 
-                    <h2>Foto & Logo</h2>
+                    <h2>
+                        Visi & Misi
+                    </h2>
 
-                    <div class="form-grid">
+                    <div class="form-group">
 
-                        <div class="form-group">
+                        <label for="visi_misi">
+                            Visi & Misi
+                        </label>
 
-                            <label for="foto">Foto Sekolah</label>
+                        <textarea
+                            id="visi_misi"
+                            name="visi_misi"
+                            placeholder="Masukkan visi dan misi sekolah"
+                        >{{ old('visi_misi', $profil->visi_misi) }}</textarea>
 
-                            <input
-                                type="file"
-                                id="foto"
-                                name="foto"
-                                accept="image/*"
-                            >
+                        <span class="form-help">
+                            Masukkan visi dan misi SMK YPC Tasikmalaya.
+                        </span>
+
+                        @error('visi_misi')
+
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
+
+                        @enderror
+
+                    </div>
+
+                </div>
+
+                <div class="form-section">
+
+                    <h2>
+                        Foto Kepala Sekolah
+                    </h2>
+
+                    <div class="form-group">
+
+                        <div class="current-photo">
+
+                            <div class="current-photo-title">
+                                Foto Saat Ini
+                            </div>
 
                             @if($profil->foto)
-                                <div class="current-image">
-                                    <img
-                                        src="{{ asset('storage/' . $profil->foto) }}"
-                                        alt="Foto Sekolah"
-                                    >
-                                    <span class="form-help">
-                                        Foto saat ini
+
+                                <img
+                                    src="{{ asset('storage/' . $profil->foto) }}"
+                                    alt="Foto Kepala Sekolah"
+                                >
+
+                            @else
+
+                                <div class="no-photo">
+
+                                    <i class="fa-solid fa-user-tie"></i>
+
+                                    <span>
+                                        Belum ada foto
                                     </span>
+
                                 </div>
+
                             @endif
-
-                            <span class="form-help">
-                                Kosongkan jika tidak ingin mengganti foto.
-                            </span>
-
-                            @error('foto')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
 
                         </div>
 
-                        <div class="form-group">
+                        <label for="foto">
+                            Ganti Foto Kepala Sekolah
+                        </label>
 
-                            <label for="logo">Logo Sekolah</label>
+                        <input
+                            type="file"
+                            id="foto"
+                            name="foto"
+                            accept=".jpg,.jpeg,.png,.webp"
+                        >
 
-                            <input
-                                type="file"
-                                id="logo"
-                                name="logo"
-                                accept="image/*"
-                            >
+                        <span class="form-help">
+                            Kosongkan jika tidak ingin mengganti foto.
+                        </span>
 
-                            @if($profil->logo)
-                                <div class="current-logo">
-                                    <img
-                                        src="{{ asset('storage/' . $profil->logo) }}"
-                                        alt="Logo Sekolah"
-                                    >
-                                    <span class="form-help">
-                                        Logo saat ini
-                                    </span>
-                                </div>
-                            @endif
+                        <span class="form-help">
+                            Format JPG, JPEG, PNG, atau WEBP. Maksimal 5MB.
+                        </span>
 
-                            <span class="form-help">
-                                Kosongkan jika tidak ingin mengganti logo.
-                            </span>
+                        @error('foto')
 
-                            @error('logo')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
 
-                        </div>
+                        @enderror
 
                     </div>
 
@@ -461,7 +481,7 @@
                         href="{{ route('admin.profil.profil') }}"
                         class="btn btn-back"
                     >
-                        <i class="bi bi-arrow-left"></i>
+                        <i class="fa-solid fa-arrow-left"></i>
                         Kembali
                     </a>
 
@@ -469,7 +489,7 @@
                         type="submit"
                         class="btn btn-save"
                     >
-                        <i class="bi bi-save"></i>
+                        <i class="fa-solid fa-floppy-disk"></i>
                         Simpan Perubahan
                     </button>
 

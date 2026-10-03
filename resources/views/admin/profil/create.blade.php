@@ -3,6 +3,7 @@
 @section('content')
 
 <style>
+
     .profil-form-page {
         background: #f5f6f8;
         min-height: 100vh;
@@ -149,6 +150,7 @@
 
     .btn-back:hover {
         background: #e5e7eb;
+        color: #111827;
     }
 
     .btn-save {
@@ -158,10 +160,12 @@
 
     .btn-save:hover {
         background: #1f2937;
+        color: white;
         transform: translateY(-1px);
     }
 
     @media (max-width: 768px) {
+
         .profil-form-page {
             padding: 15px 10px 40px;
         }
@@ -193,7 +197,9 @@
         .btn {
             width: 100%;
         }
+
     }
+
 </style>
 
 <div class="profil-form-page">
@@ -201,24 +207,40 @@
     <div class="profil-form-container">
 
         <div class="form-header">
-            <h1>Tambah Profil Sekolah</h1>
-            <p>Tambahkan informasi utama dan identitas SMK YPC Tasikmalaya.</p>
+
+            <h1>
+                Tambah Profil Sekolah
+            </h1>
+
+            <p>
+                Tambahkan informasi utama dan identitas SMK YPC Tasikmalaya.
+            </p>
+
         </div>
 
         <div class="form-card">
 
-            <form action="{{ route('admin.profil.store') }}" method="POST" enctype="multipart/form-data">
+            <form
+                action="{{ route('admin.profil.store') }}"
+                method="POST"
+                enctype="multipart/form-data"
+            >
 
                 @csrf
 
                 <div class="form-section">
 
-                    <h2>Informasi Sekolah</h2>
+                    <h2>
+                        Informasi Sekolah
+                    </h2>
 
                     <div class="form-grid">
 
                         <div class="form-group">
-                            <label for="nama_sekolah">Nama Sekolah</label>
+
+                            <label for="nama_sekolah">
+                                Nama Sekolah
+                            </label>
 
                             <input
                                 type="text"
@@ -230,88 +252,37 @@
                             >
 
                             @error('nama_sekolah')
-                                <div class="error-message">{{ $message }}</div>
+
+                                <div class="error-message">
+                                    {{ $message }}
+                                </div>
+
                             @enderror
+
                         </div>
 
                         <div class="form-group">
-                            <label for="kepala_sekolah">Kepala Sekolah</label>
+
+                            <label for="kepala_sekolah">
+                                Kepala Sekolah
+                            </label>
 
                             <input
                                 type="text"
                                 id="kepala_sekolah"
                                 name="kepala_sekolah"
-                                value="{{ old('kepala_sekolah') }}"
+                                value="{{ old('kepala_sekolah', 'Drs. Ujang Sanusi, M.M') }}"
                                 placeholder="Masukkan nama kepala sekolah"
                             >
 
                             @error('kepala_sekolah')
-                                <div class="error-message">{{ $message }}</div>
+
+                                <div class="error-message">
+                                    {{ $message }}
+                                </div>
+
                             @enderror
-                        </div>
 
-                        <div class="form-group">
-                            <label for="npsn">NPSN</label>
-
-                            <input
-                                type="text"
-                                id="npsn"
-                                name="npsn"
-                                value="{{ old('npsn') }}"
-                                placeholder="Masukkan NPSN"
-                            >
-
-                            @error('npsn')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tahun_berdiri">Tahun Berdiri</label>
-
-                            <input
-                                type="number"
-                                id="tahun_berdiri"
-                                name="tahun_berdiri"
-                                value="{{ old('tahun_berdiri') }}"
-                                placeholder="Contoh: 1995"
-                            >
-
-                            @error('tahun_berdiri')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="kontak">Kontak</label>
-
-                            <input
-                                type="text"
-                                id="kontak"
-                                name="kontak"
-                                value="{{ old('kontak') }}"
-                                placeholder="Nomor telepon atau kontak sekolah"
-                            >
-
-                            @error('kontak')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-
-                            <input
-                                type="text"
-                                id="alamat"
-                                name="alamat"
-                                value="{{ old('alamat') }}"
-                                placeholder="Alamat sekolah"
-                            >
-
-                            @error('alamat')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
                         </div>
 
                     </div>
@@ -320,37 +291,33 @@
 
                 <div class="form-section">
 
-                    <h2>Visi & Deskripsi</h2>
+                    <h2>
+                        Deskripsi Sekolah
+                    </h2>
 
-                    <div class="form-grid">
+                    <div class="form-group">
 
-                        <div class="form-group full">
-                            <label for="visi_misi">Visi & Misi</label>
+                        <label for="deskripsi">
+                            Deskripsi
+                        </label>
 
-                            <textarea
-                                id="visi_misi"
-                                name="visi_misi"
-                                placeholder="Masukkan visi dan misi sekolah"
-                            >{{ old('visi_misi') }}</textarea>
+                        <textarea
+                            id="deskripsi"
+                            name="deskripsi"
+                            placeholder="Masukkan deskripsi sekolah"
+                        >{{ old('deskripsi') }}</textarea>
 
-                            @error('visi_misi')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        <span class="form-help">
+                            Deskripsi singkat mengenai SMK YPC Tasikmalaya.
+                        </span>
 
-                        <div class="form-group full">
-                            <label for="deskripsi">Deskripsi Sekolah</label>
+                        @error('deskripsi')
 
-                            <textarea
-                                id="deskripsi"
-                                name="deskripsi"
-                                placeholder="Masukkan deskripsi sekolah"
-                            >{{ old('deskripsi') }}</textarea>
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
 
-                            @error('deskripsi')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        @enderror
 
                     </div>
 
@@ -358,47 +325,72 @@
 
                 <div class="form-section">
 
-                    <h2>Foto & Logo</h2>
+                    <h2>
+                        Visi & Misi
+                    </h2>
 
-                    <div class="form-grid">
+                    <div class="form-group">
 
-                        <div class="form-group">
-                            <label for="foto">Foto Sekolah</label>
+                        <label for="visi_misi">
+                            Visi & Misi
+                        </label>
 
-                            <input
-                                type="file"
-                                id="foto"
-                                name="foto"
-                                accept="image/*"
-                            >
+                        <textarea
+                            id="visi_misi"
+                            name="visi_misi"
+                            placeholder="Masukkan visi dan misi sekolah"
+                        >{{ old('visi_misi') }}</textarea>
 
-                            <span class="form-help">
-                                Format JPG, JPEG, PNG, atau WEBP.
-                            </span>
+                        <span class="form-help">
+                            Data ini dapat digunakan untuk informasi profil sekolah.
+                        </span>
 
-                            @error('foto')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        @error('visi_misi')
 
-                        <div class="form-group">
-                            <label for="logo">Logo Sekolah</label>
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
 
-                            <input
-                                type="file"
-                                id="logo"
-                                name="logo"
-                                accept="image/*"
-                            >
+                        @enderror
 
-                            <span class="form-help">
-                                Format JPG, JPEG, PNG, atau WEBP.
-                            </span>
+                    </div>
 
-                            @error('logo')
-                                <div class="error-message">{{ $message }}</div>
-                            @enderror
-                        </div>
+                </div>
+
+                <div class="form-section">
+
+                    <h2>
+                        Foto Kepala Sekolah
+                    </h2>
+
+                    <div class="form-group">
+
+                        <label for="foto">
+                            Foto Kepala Sekolah
+                        </label>
+
+                        <input
+                            type="file"
+                            id="foto"
+                            name="foto"
+                            accept=".jpg,.jpeg,.png,.webp"
+                        >
+
+                        <span class="form-help">
+                            Upload foto kepala sekolah.
+                        </span>
+
+                        <span class="form-help">
+                            Format JPG, JPEG, PNG, atau WEBP. Maksimal 5MB.
+                        </span>
+
+                        @error('foto')
+
+                            <div class="error-message">
+                                {{ $message }}
+                            </div>
+
+                        @enderror
 
                     </div>
 
@@ -410,7 +402,7 @@
                         href="{{ route('admin.profil.profil') }}"
                         class="btn btn-back"
                     >
-                        <i class="bi bi-arrow-left"></i>
+                        <i class="fa-solid fa-arrow-left"></i>
                         Kembali
                     </a>
 
@@ -418,7 +410,7 @@
                         type="submit"
                         class="btn btn-save"
                     >
-                        <i class="bi bi-save"></i>
+                        <i class="fa-solid fa-floppy-disk"></i>
                         Simpan Profil
                     </button>
 

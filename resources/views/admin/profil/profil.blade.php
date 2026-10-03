@@ -3,6 +3,7 @@
 @section('content')
 
 <style>
+
     .profil-page {
         background: #f5f6f8;
         min-height: 100vh;
@@ -15,10 +16,10 @@
     }
 
     .profil-hero {
-        background: linear-gradient(135deg, #374151, #e5e7eb);
-        border-left: 6px solid #6b7280;
+        background: linear-gradient(135deg, #374151, #6b7280);
+        border-left: 6px solid #9ca3af;
         border-radius: 12px;
-        padding: 45px;
+        padding: 40px;
         margin-bottom: 25px;
         color: white;
     }
@@ -26,7 +27,7 @@
     .hero-content {
         display: flex;
         align-items: center;
-        gap: 45px;
+        gap: 40px;
     }
 
     .hero-text {
@@ -34,7 +35,7 @@
     }
 
     .hero-label {
-        color: #f3f4f6;
+        color: #e5e7eb;
         font-size: 13px;
         font-weight: 600;
         letter-spacing: 1.5px;
@@ -46,15 +47,15 @@
         color: white;
         font-size: 36px;
         font-weight: 700;
-        line-height: 1.25;
-        margin-bottom: 15px;
+        line-height: 1.3;
+        margin: 0 0 15px;
     }
 
     .hero-text p {
         color: #f3f4f6;
         font-size: 15px;
         line-height: 1.8;
-        margin: 0 0 20px;
+        margin: 0 0 22px;
     }
 
     .hero-buttons {
@@ -66,6 +67,7 @@
     .btn-profil {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
         padding: 10px 18px;
         border-radius: 8px;
@@ -74,7 +76,7 @@
         text-decoration: none;
         border: none;
         cursor: pointer;
-        transition: 0.3s;
+        transition: .2s;
     }
 
     .btn-edit {
@@ -85,7 +87,6 @@
     .btn-edit:hover {
         background: #f3f4f6;
         color: #111827;
-        transform: translateY(-2px);
     }
 
     .btn-delete {
@@ -95,35 +96,16 @@
 
     .btn-delete:hover {
         background: #4b5563;
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    .btn-tambah {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 20px;
-        background: #374151;
-        color: white;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
-
-    .btn-tambah:hover {
-        background: #111827;
-        color: white;
     }
 
     .hero-image {
-        width: 47%;
+        width: 300px;
         height: 300px;
         flex-shrink: 0;
-        border-radius: 10px;
         overflow: hidden;
+        border-radius: 12px;
         background: #e5e7eb;
-        border: 4px solid rgba(255,255,255,0.3);
+        border: 4px solid rgba(255,255,255,.25);
     }
 
     .hero-image img {
@@ -132,16 +114,39 @@
         object-fit: cover;
     }
 
+    .empty-photo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #e5e7eb;
+        color: #6b7280;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .empty-photo i {
+        font-size: 60px;
+        margin-bottom: 12px;
+    }
+
+    .empty-photo span {
+        font-size: 13px;
+    }
+
     .profil-content {
-        background: #ffffff;
+        background: white;
         border: 1px solid #e5e7eb;
         border-radius: 12px;
-        padding: 50px;
+        padding: 40px;
     }
 
     .profil-section {
-        padding-bottom: 40px;
-        margin-bottom: 40px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
         border-bottom: 1px solid #e5e7eb;
     }
 
@@ -153,94 +158,94 @@
 
     .profil-section h2 {
         color: #374151;
-        font-size: 23px;
+        font-size: 22px;
         font-weight: 700;
-        margin-bottom: 18px;
-        border-left: 5px solid #6b7280;
+        margin: 0 0 18px;
         padding-left: 12px;
+        border-left: 5px solid #6b7280;
     }
 
     .profil-section p {
         color: #596273;
         font-size: 15px;
-        line-height: 2;
-        margin-bottom: 16px;
-    }
-
-    .visi-text {
-        background: #f3f4f6;
-        border-left: 4px solid #6b7280;
-        border-radius: 5px;
-        padding: 22px 25px;
-        color: #4b5563;
-        font-size: 16px;
         line-height: 1.9;
-        font-style: italic;
+        margin: 0;
     }
 
-    .identitas-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-        margin-bottom: 0;
+    .kepala-sekolah-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: #f8f9fa;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 20px;
     }
 
-    .identitas-card {
-        background: #f8f9fc;
-        border-top: 4px solid #6b7280;
+    .kepala-icon {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4b5563;
+        font-size: 25px;
+    }
+
+    .kepala-info strong {
+        display: block;
+        color: #374151;
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+
+    .kepala-info span {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .visi-misi-card {
+        background: #f8f9fa;
+        border: 1px solid #e5e7eb;
         border-radius: 10px;
         padding: 25px;
     }
 
-    .identitas-card h3 {
+    .visi-misi-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         color: #374151;
-        font-size: 19px;
+        font-size: 18px;
         font-weight: 700;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
-    .identitas-item {
-        padding: 10px 0;
-        border-bottom: 1px solid #e5e7eb;
-        color: #596273;
-    }
-
-    .identitas-item:last-child {
-        border-bottom: none;
-    }
-
-    .identitas-item strong {
-        display: block;
-        color: #374151;
-        margin-bottom: 3px;
-    }
-
-    .contact-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-    }
-
-    .contact-title {
-        color: #374151;
-        font-size: 15px;
-        font-weight: 700;
-        margin-bottom: 12px;
-    }
-
-    .contact-text {
+    .visi-misi-title i {
         color: #6b7280;
+    }
+
+    .visi-misi-text {
+        color: #596273;
         font-size: 14px;
         line-height: 1.9;
+        white-space: pre-line;
     }
 
     .alert-success {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         background: #f0fdf4;
         border: 1px solid #bbf7d0;
         color: #166534;
         border-radius: 8px;
         padding: 13px 16px;
         margin-bottom: 20px;
+        font-size: 14px;
     }
 
     .empty-profil {
@@ -259,12 +264,12 @@
 
     .empty-profil h3 {
         color: #374151;
-        margin-bottom: 8px;
+        margin: 0 0 8px;
     }
 
     .empty-profil p {
         color: #6b7280;
-        margin-bottom: 20px;
+        margin: 0 0 20px;
     }
 
     .profil-footer {
@@ -275,6 +280,7 @@
     }
 
     @media (max-width: 768px) {
+
         .profil-page {
             padding: 15px 10px 40px;
         }
@@ -303,23 +309,23 @@
 
         .hero-image {
             width: 100%;
-            height: 240px;
+            height: 260px;
         }
 
         .profil-content {
-            padding: 30px 25px;
+            padding: 25px 20px;
         }
 
-        .contact-wrapper,
-        .identitas-wrapper {
-            grid-template-columns: 1fr;
-            gap: 25px;
+        .kepala-sekolah-card {
+            align-items: flex-start;
         }
 
-        .profil-section h2 {
-            font-size: 21px;
+        .form-actions {
+            flex-direction: column;
         }
+
     }
+
 </style>
 
 <div class="profil-page">
@@ -327,10 +333,17 @@
     <div class="profil-container">
 
         @if(session('success'))
+
             <div class="alert-success">
-                <i class="bi bi-check-circle me-2"></i>
-                {{ session('success') }}
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <span>
+                    {{ session('success') }}
+                </span>
+
             </div>
+
         @endif
 
         @if($profil)
@@ -350,27 +363,43 @@
                         </h1>
 
                         <p>
-                            {{ $profil->deskripsi ?: 'Informasi profil SMK YPC Tasikmalaya.' }}
+                            {{ $profil->deskripsi }}
                         </p>
 
                         <div class="hero-buttons">
 
-                            <a href="{{ route('admin.profil.edit', $profil->id_profil) }}"
-                               class="btn-profil btn-edit">
-                                <i class="bi bi-pencil-square"></i>
+                            <a
+                                href="{{ route('admin.profil.edit', $profil->id_profil) }}"
+                                class="btn-profil btn-edit"
+                            >
+
+                                <i class="fa-solid fa-pen-to-square"></i>
+
                                 Edit Profil
+
                             </a>
 
-                            <form action="{{ route('admin.profil.destroy', $profil->id_profil) }}"
-                                  method="POST"
-                                  onsubmit="return confirm('Yakin ingin menghapus profil sekolah?')">
+                            <form
+                                action="{{ route('admin.profil.destroy', $profil->id_profil) }}"
+                                method="POST"
+                                onsubmit="return confirm('Yakin ingin menghapus profil sekolah?')"
+                            >
+
                                 @csrf
+
                                 @method('DELETE')
 
-                                <button type="submit" class="btn-profil btn-delete">
-                                    <i class="bi bi-trash"></i>
+                                <button
+                                    type="submit"
+                                    class="btn-profil btn-delete"
+                                >
+
+                                    <i class="fa-solid fa-trash"></i>
+
                                     Hapus
+
                                 </button>
+
                             </form>
 
                         </div>
@@ -380,11 +409,24 @@
                     <div class="hero-image">
 
                         @if($profil->foto)
-                            <img src="{{ asset('storage/' . $profil->foto) }}"
-                                 alt="Foto {{ $profil->nama_sekolah }}">
+
+                            <img
+                                src="{{ asset('storage/' . $profil->foto) }}"
+                                alt="Foto Kepala Sekolah"
+                            >
+
                         @else
-                            <img src="{{ asset('assets/images/smk.jpg') }}"
-                                 alt="Foto SMK YPC Tasikmalaya">
+
+                            <div class="empty-photo">
+
+                                <i class="fa-solid fa-user-tie"></i>
+
+                                <span>
+                                    Foto Kepala Sekolah belum tersedia
+                                </span>
+
+                            </div>
+
                         @endif
 
                     </div>
@@ -398,11 +440,11 @@
                 <div class="profil-section">
 
                     <h2>
-                        Tentang {{ $profil->nama_sekolah }}
+                        Tentang Sekolah
                     </h2>
 
                     <p>
-                        {{ $profil->deskripsi ?: 'Belum ada deskripsi sekolah.' }}
+                        {{ $profil->deskripsi }}
                     </p>
 
                 </div>
@@ -410,56 +452,26 @@
                 <div class="profil-section">
 
                     <h2>
-                        Identitas Sekolah
+                        Kepala Sekolah
                     </h2>
 
-                    <div class="identitas-wrapper">
+                    <div class="kepala-sekolah-card">
 
-                        <div class="identitas-card">
+                        <div class="kepala-icon">
 
-                            <h3>
-                                <i class="bi bi-building me-2"></i>
-                                Informasi Sekolah
-                            </h3>
-
-                            <div class="identitas-item">
-                                <strong>Nama Sekolah</strong>
-                                {{ $profil->nama_sekolah }}
-                            </div>
-
-                            <div class="identitas-item">
-                                <strong>Kepala Sekolah</strong>
-                                {{ $profil->kepala_sekolah ?: '-' }}
-                            </div>
-
-                            <div class="identitas-item">
-                                <strong>NPSN</strong>
-                                {{ $profil->npsn ?: '-' }}
-                            </div>
-
-                            <div class="identitas-item">
-                                <strong>Tahun Berdiri</strong>
-                                {{ $profil->tahun_berdiri ?: '-' }}
-                            </div>
+                            <i class="fa-solid fa-user-tie"></i>
 
                         </div>
 
-                        <div class="identitas-card">
+                        <div class="kepala-info">
 
-                            <h3>
-                                <i class="bi bi-geo-alt me-2"></i>
-                                Lokasi Sekolah
-                            </h3>
+                            <strong>
+                                {{ $profil->kepala_sekolah }}
+                            </strong>
 
-                            <div class="identitas-item">
-                                <strong>Alamat</strong>
-                                {{ $profil->alamat ?: '-' }}
-                            </div>
-
-                            <div class="identitas-item">
-                                <strong>Kontak</strong>
-                                {{ $profil->kontak ?: '-' }}
-                            </div>
+                            <span>
+                                Kepala Sekolah {{ $profil->nama_sekolah }}
+                            </span>
 
                         </div>
 
@@ -473,40 +485,22 @@
                         Visi & Misi
                     </h2>
 
-                    <div class="visi-text">
-                        {!! nl2br(e($profil->visi_misi ?: 'Belum ada visi dan misi.')) !!}
-                    </div>
+                    <div class="visi-misi-card">
 
-                </div>
+                        <div class="visi-misi-title">
 
-                <div class="profil-section">
+                            <i class="fa-solid fa-bullseye"></i>
 
-                    <h2>
-                        Alamat & Kontak
-                    </h2>
+                            <span>
+                                Visi & Misi Sekolah
+                            </span>
 
-                    <div class="contact-wrapper">
-
-                        <div>
-                            <div class="contact-title">
-                                Alamat Sekolah
-                            </div>
-
-                            <div class="contact-text">
-                                {!! nl2br(e($profil->alamat ?: '-')) !!}
-                            </div>
                         </div>
 
-                        <div>
-                            <div class="contact-title">
-                                Informasi Sekolah
-                            </div>
+                        <div class="visi-misi-text">
 
-                            <div class="contact-text">
-                                Nama : {{ $profil->nama_sekolah }}<br>
-                                Kepala Sekolah : {{ $profil->kepala_sekolah ?: '-' }}<br>
-                                Kontak : {{ $profil->kontak ?: '-' }}
-                            </div>
+                            {{ $profil->visi_misi }}
+
                         </div>
 
                     </div>
@@ -514,28 +508,43 @@
                 </div>
 
                 <div class="profil-footer">
-                    © 2026 {{ $profil->nama_sekolah }}
+
+                    © {{ date('Y') }}
+
+                    {{ $profil->nama_sekolah }}
+
                 </div>
 
             </div>
 
-    @else
+        @else
 
-    <div class="empty-profil">
+            <div class="empty-profil">
 
-        <i class="bi bi-building"></i>
+                <i class="fa-solid fa-school"></i>
 
-        <h3>
-            Profil Sekolah Belum Ada
-        </h3>
+                <h3>
+                    Profil Sekolah Belum Ada
+                </h3>
 
-        <p>
-            Data profil sekolah belum tersedia.
-        </p>
+                <p>
+                    Data profil sekolah belum tersedia.
+                </p>
 
-    </div>
+                <a
+                    href="{{ route('admin.profil.create') }}"
+                    class="btn-profil btn-edit"
+                >
 
-@endif
+                    <i class="fa-solid fa-plus"></i>
+
+                    Tambah Profil
+
+                </a>
+
+            </div>
+
+        @endif
 
     </div>
 
